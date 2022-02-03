@@ -16,8 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "dotenv-cli": "^4.1.1",
-    "nodemon": "^2.0.15",
-    "sequelize-cli": "^5.5.1"
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -33,6 +32,7 @@
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
     "pg": "^8.7.1",
-    "sequelize": "^5.22.5"
+    "sequelize": "^5.22.5",
+    "sequelize-cli": "^5.5.1"
   }
 }

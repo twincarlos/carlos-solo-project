@@ -29,7 +29,7 @@ function LoginForm() {
         ))}
       </ul>
       <label>
-        Username or Email
+        Email
         <input
           type="text"
           value={credential}
@@ -49,7 +49,6 @@ function LoginForm() {
       <button type="submit">Log In</button>
       <label id='signUpTag'>
         Don't have an account?
-          {/* <a href='/signup'> Sign up!</a> */}
           <a href="/signup"> Sign up!</a>
       </label>
     </form>

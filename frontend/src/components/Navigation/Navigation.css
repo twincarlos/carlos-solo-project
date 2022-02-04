@@ -1,10 +1,12 @@
 #nav {
-    background-color: hotpink;
+    background-color: black;
     text-align: center;
     list-style: none;
-    height: 45px;
+    height: 80px;
     border: 2px solid black;
-    border-radius: 25px;
+    border-radius: 50px;
+
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,.3);
 }
 
 #nav li {
@@ -16,6 +18,9 @@
 #home {
     position: absolute;
     left: 50px;
+    margin-top: 10px;
+    color: white;
+    font-size: 30px;
 }
 
 .profile-dropdown {
@@ -38,4 +43,6 @@
 #navlink {
     position: absolute;
     right: 50px;
+    margin-top: 20px;
+    color: white;
 }

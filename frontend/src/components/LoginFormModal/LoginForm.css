@@ -40,4 +40,9 @@
 #login-button {
     position: absolute;
     right: 130px;
+    margin-top: 20px;
+
+    border: none;
+    color: black;
+    font-size: 16px;
 }

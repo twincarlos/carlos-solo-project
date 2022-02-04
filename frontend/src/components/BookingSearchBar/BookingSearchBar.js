@@ -35,6 +35,7 @@ function BookingSearchBar () {
                     type='number'
                 />
             </label>
+            <button id='booking-bar-button' type='submit'></button>
         </form>
     );
 }

@@ -1,22 +1,26 @@
 .booking-form {
-    background-color: gainsboro;
-    /* padding: 5px; */
+    background-color: white;
     display: flex;
     border-radius: 50px;
     height: 70px;
+
+    position: relative;
+    bottom: 5px;
 }
 
 input.booking-form, label.booking-form {
     display: block;
     text-align: left;
-    height: 60px;
+    height: 50px;
 }
 
 label.booking-form {
     padding-left: 10px;
     padding-top: 10px;
-    margin: auto 10px;
+    margin: 10px 10px;
     transition: background-color .5s;
+    font-size: 10px;
+    font-weight: bolder;
 }
 
 input.booking-form {
@@ -28,9 +32,20 @@ input.booking-form {
 }
 
 label.booking-form:hover {
-    background-color: lightblue;
+    background-color: lightgray;
 }
 
 .selected {
-    background-color: lightblue;
+    background-color: lightgray;
+}
+
+#booking-bar-button {
+    position: relative;
+    margin: auto;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
 }

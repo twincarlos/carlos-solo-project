@@ -1,0 +1,31 @@
+#signupForm {
+    display: flex;
+    flex-direction: column;
+}
+ #signupForm input, label {
+    display: block;
+    text-align: center;
+ }
+
+ #signupForm input {
+    margin-bottom: 20px;
+    margin: 10px auto;
+
+    width: 30%;
+    height: 30px;
+}
+
+#signupForm button {
+    margin: 10px auto;
+    width: 30%;
+    height: 40px;
+}
+ #signupForm ul {
+    width: 50%;
+    margin: 10px auto;
+    text-align: center;
+    list-style: none;
+    padding: 10px;
+    color: red;
+    font-weight: bold;
+ }

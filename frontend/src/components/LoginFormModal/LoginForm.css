@@ -1,0 +1,38 @@
+#loginForm {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+#loginForm input, label {
+    display: block;
+    text-align: center;
+}
+
+#loginForm input {
+    margin-bottom: 20px;
+    margin: 10px auto;
+
+    width: 50%;
+    height: 30px;
+}
+
+#loginForm button {
+    margin: 10px auto;
+    width: 50%;
+    height: 30px;
+}
+
+#signUpTag {
+    margin-top: 20px;
+}
+
+#loginForm ul {
+    width: 50%;
+    margin: 10px auto;
+    text-align: center;
+    list-style: none;
+    padding: 10px;
+    color: red;
+    font-weight: bold;
+}

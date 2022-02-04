@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
+import './LoginForm.css';
+
 function LoginForm() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
@@ -20,8 +22,8 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
+    <form id='loginForm' onSubmit={handleSubmit}>
+      <ul id='errors'>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
@@ -45,6 +47,11 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <label id='signUpTag'>
+        Don't have an account?
+          {/* <a href='/signup'> Sign up!</a> */}
+          <a href="/signup"> Sign up!</a>
+      </label>
     </form>
   );
 }

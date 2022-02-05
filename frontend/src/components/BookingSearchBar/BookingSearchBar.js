@@ -36,7 +36,7 @@ function BookingSearchBar () {
                 />
             </label>
             <button id='booking-bar-button' type='submit'>
-                <i class="fas fa-search"/>
+                <i className="fas fa-search"/>
             </button>
         </form>
     );

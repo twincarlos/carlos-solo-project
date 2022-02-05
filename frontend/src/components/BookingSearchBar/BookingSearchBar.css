@@ -47,5 +47,11 @@ label.booking-form:hover {
     height: 60px;
     border-radius: 50%;
     border: none;
-    background-color: red;
+    background-color: goldenrod;
+    transition: background-color .5s;
+    color: white;
+}
+
+#booking-bar-button:hover {
+    background-color: tomato;
 }

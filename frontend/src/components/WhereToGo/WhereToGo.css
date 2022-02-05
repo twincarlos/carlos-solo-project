@@ -1,0 +1,37 @@
+div#where-to-go {
+    position: absolute;
+    background-color: black;
+    top: 84px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 1000px;
+
+    text-align: center;
+}
+
+#where-to-go > img {
+    position: relative;
+    width: 60%;
+    bottom: 130px;
+    border-radius: 10px;
+}
+
+#where-to-go > h1 {
+    position: relative;
+    top: 700px;
+    color: white;
+    z-index: 1;
+    font-size: 40px;
+}
+
+#where-to-go > button {
+    position: relative;
+    top: 840px;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    font-size: 20px;
+    border: none;
+    z-index: 1;
+}

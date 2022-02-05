@@ -4,9 +4,15 @@
     list-style: none;
     height: 80px;
     border: 2px solid black;
-    border-radius: 50px;
+    /* border-radius: 50px; */
 
     box-shadow: 0 10px 10px 0 rgba(0,0,0,.3);
+
+    position: absolute;
+    top: -16px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 }
 
 #nav li {
@@ -43,16 +49,16 @@
 #navlink {
     position: absolute;
     right: 50px;
-    margin-top: 20px;
+    margin-top: 21px;
     color: white;
 }
 
 #demo-login {
     position: absolute;
-    right: 220px;
+    right: 210px;
     margin-top: 20px;
-
+    background-color: transparent;
     border: none;
-    color: black;
-    font-size: 16px;
+    color: white;
+    font-size: 17px;
 }

@@ -25,13 +25,14 @@ div#where-to-go {
     font-size: 40px;
 }
 
-#where-to-go > button {
+#where-to-go > a {
     position: relative;
     top: 840px;
-    width: 150px;
-    height: 50px;
     border-radius: 30px;
     font-size: 20px;
-    border: none;
     z-index: 1;
+    background-color: white;
+    padding: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
 }

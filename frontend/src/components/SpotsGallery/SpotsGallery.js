@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSpots } from '../../store/spot';
-import { getAllImages } from '../../store/image';
 import SpotWidget from '../SpotWidget/SpotWidget';
 
 import './SpotsGallery.css';
@@ -9,11 +8,9 @@ import './SpotsGallery.css';
 function SpotsGallery() {
     const dispatch = useDispatch();
     const spotList = useSelector((state) => Object.values(state.spot));
-    const imageList = useSelector((state) => Object.values(state.image));
 
     useEffect(() => {
         dispatch(getAllSpots());
-        dispatch(getAllImages());
     }, [dispatch]);
 
     return (
@@ -25,9 +22,7 @@ function SpotsGallery() {
                 <li>Filters</li>
             </ul>
             <div className='spots-container'>
-                {
-                    spotList.map(spot => <SpotWidget key={spot.id} spot={spot}/>)
-                }
+                { spotList.map(spot => <SpotWidget key={spot.id} spot={spot}/>) }
             </div>
         </>
     );

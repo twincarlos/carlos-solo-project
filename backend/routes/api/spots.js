@@ -1,11 +1,10 @@
 const express = require('express');
-
-const { Spot } = require('../../db/models');
+const SpotRepository = require('../../db/spot-repository');
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const spots = await Spot.findAll();
+    const spots = await SpotRepository.allSpots();
     res.json(spots);
 });
 

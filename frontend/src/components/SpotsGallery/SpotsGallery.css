@@ -3,6 +3,21 @@
     top: 100px;
     left: 20%;
     width: 60%;
-    height: 100px;
-    background-color: red;
+    border-bottom: 1px solid black;
+    list-style: none;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.spots-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: rosybrown;
+    position: relative;
+    top: 70px;
+    left: 20%;
+    width: 60%;
+    height: 1800px;
 }

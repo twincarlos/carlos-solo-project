@@ -1,9 +1,13 @@
 import './SpotWidget.css';
 
-function SpotWidget ({ spot, image }) {
+function SpotWidget ({ spot }) {
     return (
         <div className='spot-widget'>
-            {spot.name}
+            <img src={spot.image} alt=''/>
+            <span>
+                <h3>{spot.name}</h3>
+                <p>{spot.price} / night</p>
+            </span>
         </div>
     );
 }

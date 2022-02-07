@@ -47,12 +47,15 @@ module.exports = (sequelize, DataTypes) => {
     rating: {
       allowNull: false,
       type: DataTypes.DECIMAL
+    },
+    image: {
+      allowNull: false,
+      type: DataTypes.STRING
     }
   }, {});
   Spot.associate = function(models) {
     // associations can be defined here
     Spot.belongsTo(models.User, { foreignKey: 'userId' });
-    Spot.hasMany(models.Image, { foreignKey: 'spotId' });
   };
   return Spot;
 };

@@ -4,4 +4,8 @@ async function allSpots() {
     return await Spot.findAll();
 }
 
-module.exports = { allSpots };
+async function getSpotByPk(id) {
+    return await Spot.findByPk(id);
+}
+
+module.exports = { allSpots, getSpotByPk };

@@ -1,0 +1,105 @@
+#main-div {
+    position: relative;
+    /* background-color: blue; */
+    margin: 100px auto;
+    width: 50%;
+    height: 2000px;
+
+    display: grid;
+    grid-template-rows: 0.2fr 1.5fr 1.3fr 1fr 1fr;
+}
+
+#title-div {
+    background-color: coral;
+}
+
+#img-div {
+    background-color: cornflowerblue;
+}
+
+#details-div {
+    background-color: crimson;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+}
+
+#details-div > #details {
+    border: solid 1px greenyellow;
+}
+
+#details-div > #booking-div {
+    border: solid 1px greenyellow;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+}
+
+#details-div > #booking-div > #price-rating {
+    display: flex;
+    justify-content: space-between;
+}
+
+#upper-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#lower-form {
+    display: block;
+    margin: 25px auto;
+}
+
+#lower-form {
+    position: relative;
+    /* bottom: 26px; */
+    width: 98.2%;
+    height: 50px;
+}
+
+#upper-form > label, #upper-form > input {
+    display: block;
+    text-align: left;
+    height: 50px;
+}
+
+#upper-form > label {
+    width: 100%;
+}
+
+#upper-form > #check-in > input {
+    width: 100%;
+    height: 50px;
+}
+
+#upper-form > #check-out > input {
+    width: 98%;
+    height: 50px;
+}
+
+#booking-div > form {
+    width: 90%;
+    margin: auto;
+}
+
+#book-button {
+    background-color: lime ;
+    /* position: relative; */
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+}
+
+#your-total {
+    text-align: center;
+}
+
+#reviews-div {
+    background-color: darkcyan;
+}
+
+#map-div {
+    background-color: gold;
+}

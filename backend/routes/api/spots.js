@@ -8,4 +8,9 @@ router.get('/', async (req, res) => {
     res.json(spots);
 });
 
+router.get('/:id', async (req, res) => {
+    const spot = await SpotRepository.getSpotByPk(req.params.id);
+    return res.json(spot);
+});
+
 module.exports = router;

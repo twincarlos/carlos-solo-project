@@ -33,6 +33,7 @@ function BookingSearchBar () {
                 <input
                     className='booking-form'
                     type='number'
+                    placeholder='1 guest'
                 />
             </label>
             <button id='booking-bar-button' type='submit'>

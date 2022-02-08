@@ -15,6 +15,10 @@ function SpotDetails () {
         dispatch(getOneSpot(spotId));
     }, [dispatch, spotId]);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <div id='main-div'>
             <div id='title-div'>
@@ -33,7 +37,7 @@ function SpotDetails () {
                         <h2>{spot?.price}</h2>
                         <h2>{spot?.rating}</h2>
                     </span>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <span id='upper-form'>
                             <label id='check-in'>
                                 Check-in

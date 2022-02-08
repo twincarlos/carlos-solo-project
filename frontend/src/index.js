@@ -9,6 +9,7 @@ import { ModalProvider } from "./context/Modal";
 import configureStore from "./store";
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from "./store/session";
+import { BookingProvider } from "./context/BookingContext";
 
 const store = configureStore();
 
@@ -24,9 +25,11 @@ function Root() {
   return (
     <Provider store={store}>
       <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <BookingProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </BookingProvider>
       </ModalProvider>
     </Provider>
   );

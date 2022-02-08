@@ -10,7 +10,7 @@ function SpotWidget ({ spot }) {
             </NavLink>
             <span>
                 <h3>{spot.name}</h3>
-                <p>{spot.price} / night</p>
+                <p>${spot.price} / night</p>
             </span>
         </div>
     );

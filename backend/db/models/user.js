@@ -91,5 +91,15 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(user.id);
   };
 
+  User.becomeHost = async function ({ userId, password }) {
+    const user = await User.scope('loginUser').findByPk(userId);
+
+    if (user.validatePassword(password)) {
+      user.isHost = true;
+      await user.save();
+      return user;
+    }
+  }
+
   return User;
 };

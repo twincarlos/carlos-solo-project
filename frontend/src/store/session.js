@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const BECOME_HOST = 'session/becomeHost';
 
 const setUser = (user) => {
   return {
@@ -13,6 +14,13 @@ const setUser = (user) => {
 const removeUser = () => {
   return {
     type: REMOVE_USER,
+  };
+};
+
+const becomeHost = (user) => {
+  return {
+    type: BECOME_HOST,
+    user
   };
 };
 
@@ -60,6 +68,17 @@ export const logout = () => async (dispatch) => {
   dispatch(removeUser());
   return response;
 };
+
+export const becomeUserHost = (user) => async (dispatch) => {
+  const response = await csrfFetch('/api/users/becomehost', {
+    method: 'POST',
+    body: JSON.stringify({userId: user.userId, password: user.password}),
+  });
+
+  const data = await response.json();
+  dispatch(becomeHost(data));
+  return data;
+}
 
 const initialState = { user: null };
 

@@ -29,6 +29,14 @@ const validateSignup = [
     handleValidationErrors
 ];
 
+const validateHost = [
+    check('password')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 6 })
+        .withMessage('Password must be 6 characters or more.'),
+    handleValidationErrors
+];
+
 // Sign up
 router.post(
     '/',
@@ -44,5 +52,20 @@ router.post(
         });
     })
 );
+
+// Become host
+router.post('/becomehost', validateHost, asyncHandler(async (req, res, next) => {
+    const { userId, password } = req.body;
+    const user = await User.becomeHost({ userId, password });
+    if (!user) {
+        const err = new Error('Become host Failed');
+            err.status = 401;
+            err.title = 'Become host failed';
+            err.errors = ['The provided credentials were invalid.'];
+            return next(err);
+    } else {
+        return res.json({ user });
+    }
+}));
 
 module.exports = router;

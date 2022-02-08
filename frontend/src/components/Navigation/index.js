@@ -20,7 +20,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />
-        <a id='become-host' href='/host'>Become a Host</a>
+        {sessionUser.isHost ? null : <a id='become-host' href='/host'>Become a Host</a>}
       </>
     );
   } else {

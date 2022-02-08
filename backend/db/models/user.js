@@ -35,7 +35,11 @@ module.exports = (sequelize, DataTypes) => {
     isHost: {
       allowNull: false,
       type: DataTypes.BOOLEAN
-    }
+    },
+    image: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
   },
     {
       defaultScope: {
@@ -58,8 +62,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, email } = this; // context will be the User instance
-    return { id, email };
+    const { id, firstName, lastName, isHost, image } = this; // context will be the User instance
+    return { id, firstName, lastName, isHost, image };
   };
 
   User.prototype.validatePassword = function (password) {

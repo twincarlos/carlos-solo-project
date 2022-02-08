@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 
 import './BecomeHost.css';
 
 function Apply ({ apply, setApply }) {
-    const history = useHistory();
     const dispatch = useDispatch();
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');

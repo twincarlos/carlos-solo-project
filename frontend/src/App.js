@@ -9,6 +9,7 @@ import WhereToGo from "./components/WhereToGo/WhereToGo";
 import SpotsGallery from "./components/SpotsGallery/SpotsGallery";
 import SpotDetails from "./components/SpotDetails/SpotDetails";
 import BecomeHost from "./components/BecomeHost/BecomeHost";
+import UserPage from "./components/UserPage/UserPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/host">
             <BecomeHost />
+          </Route>
+          <Route path="/users/:userId">
+            <UserPage />
           </Route>
         </Switch>
       )}

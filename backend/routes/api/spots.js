@@ -13,4 +13,10 @@ router.get('/:id', async (req, res) => {
     return res.json(spot);
 });
 
+router.post('/', async (req, res) => {
+    const { name, userId, address, city, state, price, numOfGuests, description, image } = req.body;
+    const spot = await SpotRepository.addSpot({ name, userId, address, city, state, price, numOfGuests, description, image });
+    return res.json(spot);
+});
+
 module.exports = router;

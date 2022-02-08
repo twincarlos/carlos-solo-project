@@ -14,29 +14,45 @@ function CreateSpotModal() {
     const [numOfGuests, setNumOfGuests] = useState(2);
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const [errors, setErrors] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submitted');
-        // return dispatch(addOneSpot({ name, userId: sessionUser.id, address, city, state, price, numOfGuests, description, image }));
-        const spot = {
-            name,
-            userId: sessionUser.id,
-            address,
-            city,
-            state,
-            price,
-            numOfGuests,
-            description,
-            image
+
+        const err = [];
+
+        if (name.length < 3) err.push('Name must be at least 3 characters long.');
+        if (name.length > 50) err.push('Name must be no greater than 50 characters.');
+        if (address.length < 5) err.push('Enter a valid address.');
+        if (city.length < 3) err.push('City name must be at least 3 characters.');
+        if (state.length < 3) err.push('Please enter a state.');
+        if (numOfGuests < 1) err.push('You must allow at least 1 guest.');
+        if (description < 10) err.push('Description must be at least 10 characters long.');
+        if (image.length < 3) err.push('Please enter an image for your spot.');
+
+        setErrors(err);
+
+        if (err.length === 0) {
+            const spot = {
+                name,
+                userId: sessionUser.id,
+                address,
+                city,
+                state,
+                price,
+                numOfGuests,
+                description,
+                image
+            }
+            return dispatch(addOneSpot(spot));
         }
-        return dispatch(addOneSpot(spot));
-        // console.log(spot);
+
     }
 
     return (
         <div id='create-spot-modal'>
             <h1>Add your spot!</h1>
+            { errors && <ul id='create-spot-errors'>{errors.map((err, i) => <li key={i}>{err}</li>)}</ul> }
             <form id='create-spot-form' onSubmit={handleSubmit}>
                 <label>
                     Name:

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import WhereToGo from "./components/WhereToGo/WhereToGo";
 import SpotsGallery from "./components/SpotsGallery/SpotsGallery";
 import SpotDetails from "./components/SpotDetails/SpotDetails";
+import BecomeHost from "./components/BecomeHost/BecomeHost";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/spots/:spotId">
             <SpotDetails />
+          </Route>
+          <Route path="/host">
+            <BecomeHost />
           </Route>
         </Switch>
       )}

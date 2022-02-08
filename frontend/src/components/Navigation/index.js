@@ -18,7 +18,10 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <ProfileButton user={sessionUser} />
+        <a id='become-host' href='/host'>Become a Host</a>
+      </>
     );
   } else {
     sessionLinks = (

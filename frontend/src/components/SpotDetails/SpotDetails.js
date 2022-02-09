@@ -24,6 +24,7 @@ function SpotDetails() {
 
     const spot = spotInfo.spot;
     const host = spotInfo.host;
+    const reviews = spotInfo.reviews;
 
     return (
         <div id='main-div'>

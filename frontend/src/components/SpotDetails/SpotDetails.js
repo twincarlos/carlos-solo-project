@@ -10,21 +10,20 @@ import './SpotDetails.css';
 function SpotDetails() {
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
-    const spotInfo = useSelector((state) => Object.values(state.spot));
+    const spotInfo = useSelector(state => state.spot.spotInfo);
     const dispatch = useDispatch();
-    const data = spotInfo[0];
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
     }, [dispatch, spotId]);
 
 
-    if (!data) {
+    if (!spotInfo) {
         return null;
     }
 
-    const spot = data.spot;
-    const host = data.host;
+    const spot = spotInfo.spot;
+    const host = spotInfo.host;
 
     return (
         <div id='main-div'>
@@ -37,10 +36,10 @@ function SpotDetails() {
             <div id='details-div'>
                 <div id='details'>
                     <h1>Hosted by: {host.firstName} {host.lastName}</h1>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupispotInfot non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                 </div>
                 <div id='booking-div'>
-                    {(sessionUser.id === host?.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
+                    {(sessionUser.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
                 </div>
             </div>
             <div id='reviews-div'>
@@ -50,7 +49,6 @@ function SpotDetails() {
                 <h1>Map</h1>
             </div>
         </div>
-
     );
 }
 

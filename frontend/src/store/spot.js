@@ -3,6 +3,7 @@ const GET_ALL_SPOTS = 'spots/GET_ALL_SPOTS';
 const GET_ONE_SPOT = 'spots/GET_ONE_SPOT';
 const ADD_SPOT = 'spots/ADD_SPOT';
 const UPDATE_SPOT = 'spots/UPDATE_SPOT';
+const REMOVE_SPOT = 'spots/REMOVE_SPOT';
 
 const allSpots = (spots) => {
     return {
@@ -28,6 +29,13 @@ const addSpot = (newSpot) => {
 const updateSpot = (spot) => {
     return {
         type: UPDATE_SPOT,
+        spot
+    }
+}
+
+const removeSpot = (spot) => {
+    return {
+        type: REMOVE_SPOT,
         spot
     }
 }
@@ -81,6 +89,17 @@ export const updateOneSpot = (data) => async (dispatch) => {
     }
 }
 
+export const removeOneSpot = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${id}`, {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      const spot = await response.json();
+      dispatch(removeSpot(spot));
+    }
+  };
+
 const initialState = {};
 
 const spotsReducer = (state = initialState, action) => {
@@ -102,6 +121,11 @@ const spotsReducer = (state = initialState, action) => {
             const newState = { spot: action.spot};
             return newState;
         }
+        case REMOVE_SPOT: {
+            const newState = { ...state };
+            delete newState[action.spot];
+            return newState;
+          }
         default:
             return state;
     }

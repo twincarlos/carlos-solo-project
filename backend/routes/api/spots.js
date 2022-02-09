@@ -25,4 +25,9 @@ router.put('/:id', async (req, res) => {
     return res.json(newSpot);
 });
 
+router.delete("/:id", async function (req, res) {
+    const spot = await SpotRepository.deleteSpot(req.params.id);
+    return res.json({ spot });
+  });
+
 module.exports = router;

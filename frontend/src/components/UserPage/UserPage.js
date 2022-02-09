@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreateSpotModal from '../CreateSpotModal/CreateSpotModal';
+import CreateSpotModal from '../SpotModals/CreateSpotModal';
 
 import './UserPage.css'
 

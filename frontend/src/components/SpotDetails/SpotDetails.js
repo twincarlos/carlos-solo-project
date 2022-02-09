@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
+import BookMe from './BookMe';
+import EditMe from './EditMe';
 
 import './SpotDetails.css';
 
@@ -37,29 +39,11 @@ function SpotDetails () {
             </div>
             <div id='details-div'>
                 <div id='details'>
-                    <h1>Hosted by: User name</h1>
+                    <h1>Hosted by: {host.firstName} {host.lastName}</h1>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                 </div>
                 <div id='booking-div'>
-                    <span id='price-rating'>
-                        <h2>{spot.price}</h2>
-                        <h2>{spot.rating}</h2>
-                    </span>
-                    <form onSubmit={handleSubmit}>
-                        <span id='upper-form'>
-                            <label id='check-in'>
-                                Check-in
-                                <input type='date'></input>
-                            </label>
-                            <label id='check-out'>
-                                Check-out
-                                <input type='date'></input>
-                            </label>
-                        </span>
-                        <input id='lower-form' type='number' placeholder='1 guest'></input>
-                        <button id='book-button'>Book</button>
-                    </form>
-                    <h3 id='your-total'>Your total is: $total</h3>
+                    {(sessionUser.id === host.id) ? <EditMe spot={{ spot }}/> : <BookMe spot={{ spot }} />}
                 </div>
             </div>
             <div id='reviews-div'>

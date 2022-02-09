@@ -22,7 +22,17 @@ async function allSpots() {
 async function getSpotByPk(id) {
     const spot = await Spot.findByPk(id);
     const host = await User.findByPk(spot.userId);
-    const reviews = await Review.findAll({ where: { spotId: id } });
+    const data = await Review.findAll({ where: { spotId: id } });
+    const reviews = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const author = await User.findByPk(data[i].userId);
+        reviews.push({
+            review: data[i],
+            author
+        });
+    }
+
     return { spot, host, reviews };
 }
 
@@ -66,6 +76,6 @@ async function deleteSpot(spotId) {
 
     // await Item.destroy({ where: { id: item.id }});
     return await spot.destroy();
-  }
+}
 
 module.exports = { allSpots, getSpotByPk, addSpot, updateSpot, deleteSpot };

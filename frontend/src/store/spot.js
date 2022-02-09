@@ -118,7 +118,8 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case UPDATE_SPOT: {
-            const newState = { ...state, spot: action.spot};
+            state.spotInfo.spot = action.spot;
+            const newState = { ...state};
             return newState;
         }
         case REMOVE_SPOT: {

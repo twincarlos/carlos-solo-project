@@ -50,13 +50,14 @@ async function addSpot(spot) {
 async function updateSpot(data) {
     const { id, name, price, numOfGuests, description, image } = data;
     const spot = await Spot.findByPk(id);
-    await spot.update({
+    const newSpot = await spot.update({
         name,
         price,
         numOfGuests,
         description,
         image
     });
+    return newSpot;
 }
 
 async function deleteSpot(spotId) {

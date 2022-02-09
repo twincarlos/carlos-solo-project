@@ -10,10 +10,10 @@ const allSpots = (spots) => {
     }
 }
 
-const oneSpot = (spot) => {
+const oneSpot = (spotInfo) => {
     return {
         type: GET_ONE_SPOT,
-        spot
+        spotInfo
     }
 }
 
@@ -39,10 +39,10 @@ export const getOneSpot = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${id}`);
 
     if (response.ok) {
-        const spot = await response.json();
+        const spotInfo = await response.json();
 
-        dispatch(oneSpot(spot));
-        return spot;
+        dispatch(oneSpot(spotInfo));
+        return spotInfo;
     }
 }
 
@@ -67,7 +67,7 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case GET_ONE_SPOT: {
-            const newState = { spot: action.spot };
+            const newState = { spotInfo: action.spotInfo };
             return newState;
         }
         case ADD_SPOT: {

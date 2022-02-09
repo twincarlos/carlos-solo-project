@@ -9,8 +9,8 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const spot = await SpotRepository.getSpotByPk(req.params.id);
-    return res.json(spot);
+    const spotInfo = await SpotRepository.getSpotByPk(req.params.id);
+    return res.json(spotInfo);
 });
 
 router.post('/', async (req, res) => {

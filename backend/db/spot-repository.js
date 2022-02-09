@@ -1,4 +1,4 @@
-const { Spot } = require('./models');
+const { Spot, User } = require('./models');
 
 function positiveOrNegative() {
     const min = 0;
@@ -20,7 +20,9 @@ async function allSpots() {
 }
 
 async function getSpotByPk(id) {
-    return await Spot.findByPk(id);
+    const spot = await Spot.findByPk(id);
+    const host = await User.findByPk(spot.userId);
+    return { spot, host };
 }
 
 async function addSpot(spot,) {

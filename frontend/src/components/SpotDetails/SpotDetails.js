@@ -6,14 +6,22 @@ import { getOneSpot } from '../../store/spot';
 import './SpotDetails.css';
 
 function SpotDetails () {
+    const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
+    const spotInfo = useSelector((state) => Object.values(state.spot));
     const dispatch = useDispatch();
-    const data = useSelector((state) => Object.values(state.spot));
-    const spot = data[0];
+    const data = spotInfo[0];
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
     }, [dispatch, spotId]);
+
+    if (!data) {
+        return null;
+    }
+
+    const spot = data.spot;
+    const host = data.host;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,10 +30,10 @@ function SpotDetails () {
     return (
         <div id='main-div'>
             <div id='title-div'>
-                <h1>{spot?.name}</h1>
+                <h1>{spot.name}</h1>
             </div>
             <div id='img-div'>
-                <img src={spot?.image} alt=''></img>
+                <img src={spot.image} alt=''></img>
             </div>
             <div id='details-div'>
                 <div id='details'>
@@ -34,8 +42,8 @@ function SpotDetails () {
                 </div>
                 <div id='booking-div'>
                     <span id='price-rating'>
-                        <h2>{spot?.price}</h2>
-                        <h2>{spot?.rating}</h2>
+                        <h2>{spot.price}</h2>
+                        <h2>{spot.rating}</h2>
                     </span>
                     <form onSubmit={handleSubmit}>
                         <span id='upper-form'>

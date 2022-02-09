@@ -17,9 +17,9 @@ function SpotsGallery() {
         <>
             <h1>Spots Gallery</h1>
             <ul id='states-nav'>
-                <li>All</li>
+                <li key='all'>All</li>
                 {spotList.map(spot => <li key={spot.id}>{spot.state}</li>)}
-                <li>Filters</li>
+                <li key='filters'>Filters</li>
             </ul>
             <div className='spots-container'>
                 { spotList.map(spot => <SpotWidget key={spot.id} spot={spot}/>) }

@@ -1,6 +1,5 @@
 #main-div {
     position: relative;
-    /* background-color: blue; */
     margin: 100px auto;
     width: 50%;
     height: 2000px;
@@ -100,8 +99,21 @@
 
 #reviews-div {
     background-color: darkcyan;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* padding: 10px; */
 }
 
 #map-div {
     background-color: gold;
+}
+
+
+
+.review-container {
+    background-color: white;
+    border: green 1px solid;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 10px;
 }

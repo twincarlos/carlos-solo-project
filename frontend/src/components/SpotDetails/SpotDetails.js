@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
 import BookMe from './BookMe';
 import EditMe from './EditMe';
+import Review from './Review';
 
 import './SpotDetails.css';
 
@@ -44,7 +45,7 @@ function SpotDetails() {
                 </div>
             </div>
             <div id='reviews-div'>
-                <h1>Reviews</h1>
+                {reviews.length ? reviews.map((review) => <Review key={review.id} review={review}/>) : <h2>No reviews yet</h2>}
             </div>
             <div id='map-div'>
                 <h1>Map</h1>

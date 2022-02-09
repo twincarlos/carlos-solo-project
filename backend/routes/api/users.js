@@ -37,6 +37,11 @@ const validateHost = [
     handleValidationErrors
 ];
 
+router.get('/:id', async (req, res) => {
+    const user = await User.findByPk(req.params.id);
+    return res.json(user);
+});
+
 // Sign up
 router.post(
     '/',

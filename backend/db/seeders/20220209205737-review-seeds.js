@@ -10,7 +10,9 @@ module.exports = {
       */
     return queryInterface.bulkInsert('Reviews', [
       { spotId: 1, userId: 2, review: 'Great place.', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },
-      { spotId: 1, userId: 3, review: 'I loved it!', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },
+      { spotId: 1, userId: 2, review: 'I loved it!', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },
+      { spotId: 1, userId: 3, review: 'Just wow!', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },
+      { spotId: 1, userId: 3, review: 'I fell in love.', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },
       { spotId: 2, userId: 2, review: 'Had so much fun!', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },
       { spotId: 2, userId: 3, review: 'Want to come back.', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },
       { spotId: 3, userId: 2, review: 'Will be coming back for sure...', rating: 1.00, createdAt: new Date(), updatedAt: new Date() },

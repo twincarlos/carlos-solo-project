@@ -19,7 +19,6 @@ function CreateSpotModal() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const err = [];
 
         if (name.length < 3) err.push('Name must be at least 3 characters long.');
@@ -48,7 +47,6 @@ function CreateSpotModal() {
             setSuccess(true);
             return dispatch(addOneSpot(newSpot));
         }
-
     }
 
     return (

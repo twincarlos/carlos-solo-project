@@ -25,7 +25,7 @@ async function getSpotByPk(id) {
     return { spot, host };
 }
 
-async function addSpot(spot,) {
+async function addSpot(spot) {
     const { name, userId, address, city, state, price, numOfGuests, description, image } = spot;
 
     const newSpot = await Spot.create({
@@ -47,4 +47,16 @@ async function addSpot(spot,) {
     return await newSpot.save();
 }
 
-module.exports = { allSpots, getSpotByPk, addSpot };
+async function updateSpot(data) {
+    const { id, name, price, numOfGuests, description, image } = data;
+    const spot = await Spot.findByPk(id);
+    await spot.update({
+        name,
+        price,
+        numOfGuests,
+        description,
+        image
+    });
+}
+
+module.exports = { allSpots, getSpotByPk, addSpot, updateSpot };

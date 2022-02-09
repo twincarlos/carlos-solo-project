@@ -19,4 +19,10 @@ router.post('/', async (req, res) => {
     return res.json(spot);
 });
 
+router.put('/:id', async (req, res) => {
+    const { id, name, price, numOfGuests, description, image } = req.body;
+    const newSpot = await SpotRepository.updateSpot({ id, name, price, numOfGuests, description, image });
+    return res.json(newSpot);
+});
+
 module.exports = router;

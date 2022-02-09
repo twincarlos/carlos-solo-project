@@ -13,7 +13,6 @@ function DeleteSpotModal({ spot }) {
         <div id='delete-form-modal'>
             <h1>Are you sure you want to delete this spot?</h1>
             <button onClick={deleteSpot}>Delete</button>
-            <button>Cancel</button>
         </div>
     );
 }

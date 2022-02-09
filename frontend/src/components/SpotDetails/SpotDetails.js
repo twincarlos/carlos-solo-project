@@ -7,7 +7,7 @@ import EditMe from './EditMe';
 
 import './SpotDetails.css';
 
-function SpotDetails () {
+function SpotDetails() {
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const spotInfo = useSelector((state) => Object.values(state.spot));
@@ -17,6 +17,7 @@ function SpotDetails () {
     useEffect(() => {
         dispatch(getOneSpot(spotId));
     }, [dispatch, spotId]);
+
 
     if (!data) {
         return null;
@@ -39,7 +40,7 @@ function SpotDetails () {
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                 </div>
                 <div id='booking-div'>
-                    {(sessionUser.id === host?.id) ? <EditMe spot={spot}/> : <BookMe spot={spot} />}
+                    {(sessionUser.id === host?.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
                 </div>
             </div>
             <div id='reviews-div'>
@@ -49,6 +50,7 @@ function SpotDetails () {
                 <h1>Map</h1>
             </div>
         </div>
+
     );
 }
 

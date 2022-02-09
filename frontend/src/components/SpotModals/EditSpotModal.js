@@ -34,7 +34,8 @@ function EditSpotModal({ spot }) {
                 image
             }
             setSuccess(true);
-            return dispatch(updateOneSpot(newSpot));
+            dispatch(updateOneSpot(newSpot));
+            return window.location.reload(true);
         }
     }
 

@@ -17,10 +17,10 @@ const oneSpot = (spot) => {
     }
 }
 
-const addSpot = (spot) => {
+const addSpot = (newSpot) => {
     return {
         type: ADD_SPOT,
-        spot
+        newSpot
     }
 }
 
@@ -46,11 +46,10 @@ export const getOneSpot = (id) => async (dispatch) => {
     }
 }
 
-export const addOneSpot = (spot) => async (dispatch) => {
-    console.log(spot)
+export const addOneSpot = (newSpot) => async (dispatch) => {
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
-        body: JSON.stringify(spot),
+        body: JSON.stringify(newSpot),
     });
 
     const data = await response.json();

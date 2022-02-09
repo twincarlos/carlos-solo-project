@@ -69,3 +69,14 @@
   position: relative;
   right: 20px;
 }
+
+#success {
+  position: relative;
+  color: green;
+  background-color: greenyellow;
+  border: 1px solid green;
+  width: 20%;
+  margin: auto;
+  border-radius: 30px;
+  padding: 10px;
+}

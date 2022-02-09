@@ -15,6 +15,7 @@ function CreateSpotModal() {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState('');
+    const [success, setSuccess] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +34,7 @@ function CreateSpotModal() {
         setErrors(err);
 
         if (err.length === 0) {
-            const spot = {
+            const newSpot = {
                 name,
                 userId: sessionUser.id,
                 address,
@@ -44,7 +45,8 @@ function CreateSpotModal() {
                 description,
                 image
             }
-            return dispatch(addOneSpot(spot));
+            setSuccess(true);
+            return dispatch(addOneSpot(newSpot));
         }
 
     }
@@ -53,6 +55,7 @@ function CreateSpotModal() {
         <div id='create-spot-modal'>
             <h1>Add your spot!</h1>
             { errors && <ul id='create-spot-errors'>{errors.map((err, i) => <li key={i}>{err}</li>)}</ul> }
+            { success && <h2 id='success'>Success!</h2>}
             <form id='create-spot-form' onSubmit={handleSubmit}>
                 <label>
                     Name:

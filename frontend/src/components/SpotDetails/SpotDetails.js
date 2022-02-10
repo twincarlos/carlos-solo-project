@@ -45,12 +45,12 @@ function SpotDetails() {
                     <p>{spot.description}</p>
                 </div>
                 <div id='booking-div'>
-                    {(sessionUser.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
+                    {(sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
                 </div>
             </div>
             <div id='reviews-div'>
                 <h1 id='reviews-title'>Reviews</h1>
-                <button id='add-review-button' onClick={() => setShowModal(true)}>Add</button>
+                {(sessionUser?.id !== host.id) && (<button id='add-review-button' onClick={() => setShowModal(true)}>Add</button>)}
                 { showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <AddReviewModal spotInfo={spotInfo}/>

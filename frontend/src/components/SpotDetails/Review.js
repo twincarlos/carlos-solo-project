@@ -47,7 +47,7 @@ function Review ({ review }) {
                 </>
             }
             {
-                (sessionUser.id === author.id) &&
+                (sessionUser?.id === author.id) &&
                     (edit ?
                     <>
                         <button onClick={handleEdit}>Done</button>

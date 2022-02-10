@@ -43,7 +43,7 @@ function UserPage() {
             <button onClick={() => setShowModal(true)}>Create Spot</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreateSpotModal setRender={setRender} setShowModal={setShowModal} />
+                    <CreateSpotModal render={render} setRender={setRender} setShowModal={setShowModal} />
                 </Modal>
             )}
             {renderList()}

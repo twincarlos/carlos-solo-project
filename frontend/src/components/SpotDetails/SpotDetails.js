@@ -19,10 +19,14 @@ function SpotDetails() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const { newName, newDescription, newImage } = useContext(SpotContext);
+    const [render, setRender] = useState(false);
+
+    let renderList = () => null;
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
-    }, [dispatch, spotId]);
+        renderList();
+    }, [dispatch, spotId, render]);
 
 
     if (!spotInfo) {
@@ -32,6 +36,14 @@ function SpotDetails() {
     const spot = spotInfo.spot;
     const host = spotInfo.host;
     const reviews = spotInfo.reviews;
+
+    renderList = () => {
+        return (
+        <div id='reviews-list'>
+            { reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) }
+        </div>
+        );
+    }
 
     return (
         <div id='main-div'>
@@ -57,12 +69,10 @@ function SpotDetails() {
                 </div>
                 { showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <AddReviewModal spotInfo={spotInfo}/>
+                        <AddReviewModal render={render} setRender={setRender} spotInfo={spotInfo}/>
                     </Modal>
                 )}
-                <div id='reviews-list'>
-                    { reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) }
-                </div>
+                {renderList()}
             </div>
             <div id='map-div'>
                 <h1>Map</h1>

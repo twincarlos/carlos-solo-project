@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addOneSpot } from '../../store/spot';
 
-function CreateSpotModal({ setRender, setShowModal }) {
+function CreateSpotModal({ render, setRender, setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
@@ -44,7 +44,7 @@ function CreateSpotModal({ setRender, setShowModal }) {
                 image
             }
             // setSuccess(true);
-            setRender(true);
+            setRender(!render);
             setShowModal(false);
             return dispatch(addOneSpot(newSpot));
         }

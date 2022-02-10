@@ -35,7 +35,7 @@ function UserPage() {
 
     renderList = () => {
         return (
-            spotList && (<ul id='spot-list'>
+            spotList && (<ul>
                 { spotList.map((spot) => <SpotWidget key={`${spot.id}`} spot={spot}/>) }
             </ul>)
         );
@@ -43,15 +43,25 @@ function UserPage() {
 
     return (
         <div id='user-main-div'>
-            <BookingWidget booking={bookingList? bookingList[0] : null}/>
-            <h1>{user.firstName} {user.lastName}</h1>
-            <button onClick={() => setShowModal(true)}>Create Spot</button>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <CreateSpotModal render={render} setRender={setRender} setShowModal={setShowModal} />
-                </Modal>
-            )}
-            {renderList()}
+            <div id='user-header'>
+                <h1>{user.firstName} {user.lastName}</h1>
+                <button onClick={() => setShowModal(true)}>Create Spot</button>
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <CreateSpotModal render={render} setRender={setRender} setShowModal={setShowModal} />
+                    </Modal>
+                )}
+            </div>
+            <div id='user-body'>
+                <div id='spot-list'>
+                    <h2>Your spots</h2>
+                    {renderList()}
+                </div>
+                <div id='booking-list'>
+                    <h2>Your bookings</h2>
+                    <BookingWidget booking={bookingList? bookingList[0] : null}/>
+                </div>
+            </div>
         </div>
     );
 }

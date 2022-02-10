@@ -1,11 +1,21 @@
 #user-main-div {
     position: relative;
-    background-color: coral;
     height: auto;
     top: 70px;
+    display: grid;
+    grid-template-rows: 0.2fr 0.8fr;
 }
 
 #spot-list {
-    /* background-color: white; */
     width: fit-content;
+}
+
+#user-header {
+    background-color: aqua;
+}
+
+#user-body {
+    background-color: blueviolet;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
 }

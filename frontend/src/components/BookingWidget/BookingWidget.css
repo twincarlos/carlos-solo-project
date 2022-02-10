@@ -2,15 +2,20 @@
     position: absolute;
     background-color: aquamarine;
     border-radius: 20px;
-    width: 500px;
+    width: 600px;
     height: 200px;
 }
 
-.booking-div > img {
+.booking-img {
     position: relative;
-    bottom: 117px;
-    left: 200px;
+    bottom: 117.1px;
+    left: 300px;
     width: 300px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.booking-h3 {
+    position: relative;
+    bottom: 220px;
 }

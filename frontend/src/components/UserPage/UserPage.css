@@ -1,6 +1,11 @@
 #user-main-div {
     position: relative;
     background-color: coral;
-    height: 500px;
+    height: auto;
     top: 70px;
+}
+
+#spot-list {
+    /* background-color: white; */
+    width: fit-content;
 }

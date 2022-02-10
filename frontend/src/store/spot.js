@@ -4,10 +4,18 @@ const GET_ONE_SPOT = 'spots/GET_ONE_SPOT';
 const ADD_SPOT = 'spots/ADD_SPOT';
 const UPDATE_SPOT = 'spots/UPDATE_SPOT';
 const REMOVE_SPOT = 'spots/REMOVE_SPOT';
+const ALL_SPOTS_BY_USERID = '/spots/ALL_SPOTS_BY_USERID'
 
 const allSpots = (spots) => {
     return {
         type: GET_ALL_SPOTS,
+        spots
+    }
+}
+
+const allSpotsByUserId = (spots) => {
+    return {
+        type: ALL_SPOTS_BY_USERID,
         spots
     }
 }
@@ -47,6 +55,17 @@ export const getAllSpots = () => async (dispatch) => {
         const spots = await response.json();
 
         dispatch(allSpots(spots));
+        return spots;
+    }
+}
+
+export const getAllSpotsByUserId = (userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/all/${userId}`);
+
+    if (response.ok) {
+        const spots = await response.json();
+
+        dispatch(allSpotsByUserId(spots));
         return spots;
     }
 }
@@ -107,6 +126,10 @@ const spotsReducer = (state = initialState, action) => {
         case GET_ALL_SPOTS: {
             const newState = {};
             action.spots.forEach((spot) => (newState[spot.id] = spot));
+            return newState;
+        }
+        case ALL_SPOTS_BY_USERID: {
+            const newState = { ...state, spotList: action.spots};
             return newState;
         }
         case GET_ONE_SPOT: {

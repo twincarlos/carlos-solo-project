@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addOneSpot } from '../../store/spot';
 
-function CreateSpotModal() {
+function CreateSpotModal({ setRender, setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
@@ -15,7 +15,6 @@ function CreateSpotModal() {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState('');
-    const [success, setSuccess] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,7 +43,9 @@ function CreateSpotModal() {
                 description,
                 image
             }
-            setSuccess(true);
+            // setSuccess(true);
+            setRender(true);
+            setShowModal(false);
             return dispatch(addOneSpot(newSpot));
         }
     }
@@ -53,7 +54,7 @@ function CreateSpotModal() {
         <div id='create-spot-modal'>
             <h1>Add your spot!</h1>
             { errors && <ul id='create-spot-errors'>{errors.map((err, i) => <li key={i}>{err}</li>)}</ul> }
-            { success && <h2 id='success'>Success!</h2>}
+            {/* { success && <h2 id='success'>Success!</h2>} */}
             <form id='create-spot-form' onSubmit={handleSubmit}>
                 <label>
                     Name:

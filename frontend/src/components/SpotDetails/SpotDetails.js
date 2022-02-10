@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
 import React, { useState } from 'react';
@@ -8,6 +8,7 @@ import BookMe from './BookMe';
 import EditMe from './EditMe';
 import Review from './Review';
 import AddReviewModal from './AddReviewModal';
+import { SpotContext } from '../../context/SpotContext';
 
 import './SpotDetails.css';
 
@@ -17,6 +18,7 @@ function SpotDetails() {
     const spotInfo = useSelector(state => state.spot.spotInfo);
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
+    const { newName, newDescription, newImage } = useContext(SpotContext);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
@@ -34,15 +36,15 @@ function SpotDetails() {
     return (
         <div id='main-div'>
             <div id='title-div'>
-                <h1>{spot.name}</h1>
+                <h1>{newName ? newName : spot.name}</h1>
             </div>
             <div id='img-div'>
-                <img src={spot.image} alt=''></img>
+                <img src={newImage ? newImage : spot.image} alt=''></img>
             </div>
             <div id='details-div'>
                 <div id='details'>
                     <h1>Hosted by: {host.firstName} {host.lastName}</h1>
-                    <p>{spot.description}</p>
+                    <p>{newDescription ? newDescription : spot.description}</p>
                 </div>
                 <div id='booking-div'>
                     {(sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}

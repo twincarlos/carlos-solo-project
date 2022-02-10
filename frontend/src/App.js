@@ -10,6 +10,7 @@ import SpotsGallery from "./components/SpotsGallery/SpotsGallery";
 import SpotDetails from "./components/SpotDetails/SpotDetails";
 import BecomeHost from "./components/BecomeHost/BecomeHost";
 import UserPage from "./components/UserPage/UserPage";
+import { SpotProvider } from "./context/SpotContext";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,9 @@ function App() {
             <SpotsGallery />
           </Route>
           <Route path="/spots/:spotId">
-            <SpotDetails />
+            <SpotProvider>
+              <SpotDetails />
+            </SpotProvider>
           </Route>
           <Route path="/host">
             <BecomeHost />

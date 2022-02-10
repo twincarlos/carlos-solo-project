@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useDispatch } from "react-redux";
+import { SpotContext } from '../../context/SpotContext';
 import { updateOneSpot } from '../../store/spot';
 
 function EditSpotModal({ spot }) {
@@ -11,6 +12,7 @@ function EditSpotModal({ spot }) {
     const [image, setImage] = useState(spot.spot.image);
     const [errors, setErrors] = useState('');
     const [success, setSuccess] = useState(false);
+    const { setNewName, setNewDescription, setNewPrice, setNewNumOfGuests, newImage, setNewImage } = useContext(SpotContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,6 +35,11 @@ function EditSpotModal({ spot }) {
                 description,
                 image
             }
+            setNewName(name)
+            setNewDescription(description)
+            setNewPrice(price)
+            setNewNumOfGuests(numOfGuests)
+            setNewImage(image)
             setSuccess(true);
             return dispatch(updateOneSpot(newSpot));
             // return window.location.reload(true);

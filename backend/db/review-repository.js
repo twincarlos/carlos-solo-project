@@ -8,4 +8,9 @@ async function updateReview(data) {
     return newReview;
 }
 
-module.exports = { updateReview };
+async function deleteReview(id) {
+    const review = await Review.findByPk(id);
+    return await review.destroy();
+}
+
+module.exports = { updateReview, deleteReview };

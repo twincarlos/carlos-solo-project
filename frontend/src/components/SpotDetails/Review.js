@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateOneReview } from '../../store/review';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateOneReview, deleteOneReview } from '../../store/review';
 
 function Review ({ review }) {
     const dispatch = useDispatch();
@@ -11,6 +11,7 @@ function Review ({ review }) {
     const [text, setText] = useState(myReview.review);
     const [rating, setRating] = useState(myReview.rating);
     const [error, setError] = useState(false);
+    const sessionUser = useSelector(state => state.session.user);
 
     const handleEdit = () => {
         if (text.length >= 5) {
@@ -21,13 +22,21 @@ function Review ({ review }) {
         }
     }
 
+    const handleDelete = () => {
+        setText(null);
+        setRating(null);
+        setRemove(false);
+        return dispatch(deleteOneReview(myReview.id));
+    }
+
     return (
-        <div className='review-container'>
+        text &&
+        (<div className='review-container'>
             <h3>{author.firstName} {author.lastName} said:</h3>
             {
                 edit ?
                 <>
-                    {error ? <p>Enter at least 5 characters</p> : null}
+                    {error && <p>Enter at least 5 characters</p>}
                     <textarea defaultValue={myReview.review} onChange={(e) => setText(e.target.value)}></textarea>
                     <input type='number' defaultValue={myReview.rating} onChange={(e) => setRating(e.target.value)}></input>
                 </>
@@ -38,26 +47,27 @@ function Review ({ review }) {
                 </>
             }
             {
-                edit ?
-                <>
-                    <button onClick={handleEdit}>Done</button>
-                    <button onClick={() => setEdit(false)}>Cancel</button>
-                </>
-                :
-                (
-                    remove ?
+                (sessionUser.id === author.id) &&
+                    (edit ?
                     <>
-                        <button>Done</button>
-                        <button onClick={() => setRemove(false)}>Cancel</button>
+                        <button onClick={handleEdit}>Done</button>
+                        <button onClick={() => setEdit(false)}>Cancel</button>
                     </>
                     :
-                    <>
-                        <button onClick={() => setEdit(true)}>Edit</button>
-                        <button onClick={() => setRemove(true)}>Delete</button>
-                    </>
-                )
+                    (
+                        remove ?
+                        <>
+                            <button onClick={handleDelete}>Done</button>
+                            <button onClick={() => setRemove(false)}>Cancel</button>
+                        </>
+                        :
+                        <>
+                            <button onClick={() => setEdit(true)}>Edit</button>
+                            <button onClick={() => setRemove(true)}>Delete</button>
+                        </>
+                    ))
             }
-        </div>
+        </div>)
     );
 }
 

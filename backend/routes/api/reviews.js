@@ -9,4 +9,9 @@ router.put('/', async (req, res) => {
     return res.json(newReview);
 });
 
+router.delete('/:id', async (req, res) => {
+    const review = await ReviewRepository.deleteReview(req.params.id);
+    return res.json(review);
+});
+
 module.exports = router;

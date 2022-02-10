@@ -1,6 +1,16 @@
 .booking-div {
+    position: absolute;
     background-color: aquamarine;
     border-radius: 20px;
-    width: 400px;
+    width: 500px;
     height: 200px;
+}
+
+.booking-div > img {
+    position: relative;
+    bottom: 117px;
+    left: 200px;
+    width: 300px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }

@@ -16,10 +16,14 @@ function BookingWidget ({ booking }) {
         return null;
     }
 
+    const spot = bookingInfo.spot;
+    const host = bookingInfo.host;
+
     return (
         <div className='booking-div'>
             <h3>Your stay at:</h3>
-            <h2>Your Bookings</h2>
+            <h2>{spot.name}</h2>
+            <img src={spot.image} alt=''></img>
         </div>
     );
 }

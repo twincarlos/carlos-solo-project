@@ -122,7 +122,17 @@
 
 #reviews-title {
     position: absolute;
-    bottom: 375px;
+    bottom: 680px;
     left: 15px;
+    width: fit-content;
+    height: fit-content;
     color: greenyellow;
+}
+
+#add-review-button {
+    position: absolute;
+    bottom: 705px;
+    left: 150px;
+    width: 60px;
+    height: 40px;
 }

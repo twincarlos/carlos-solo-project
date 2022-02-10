@@ -2,10 +2,12 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
+import React, { useState } from 'react';
+import { Modal } from '../../context/Modal';
 import BookMe from './BookMe';
 import EditMe from './EditMe';
 import Review from './Review';
-import AddReview from './AddReview';
+import AddReviewModal from './AddReviewModal';
 
 import './SpotDetails.css';
 
@@ -14,6 +16,7 @@ function SpotDetails() {
     const { spotId } = useParams();
     const spotInfo = useSelector(state => state.spot.spotInfo);
     const dispatch = useDispatch();
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
@@ -47,7 +50,12 @@ function SpotDetails() {
             </div>
             <div id='reviews-div'>
                 <h1 id='reviews-title'>Reviews</h1>
-                <AddReview />
+                <button id='add-review-button' onClick={() => setShowModal(true)}>Add</button>
+                { showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <AddReviewModal spotInfo={spotInfo}/>
+                    </Modal>
+                )}
                 { reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) }
             </div>
             <div id='map-div'>

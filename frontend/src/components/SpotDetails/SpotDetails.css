@@ -16,6 +16,10 @@
     background-color: cornflowerblue;
 }
 
+#img-div > img {
+    width: 100%;
+}
+
 #details-div {
     background-color: crimson;
     display: grid;
@@ -100,11 +104,7 @@
 
 #reviews-div {
     background-color: darkcyan;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding-top: 50px;
     height: auto;
-    /* padding: 10px; */
 }
 
 #map-div {
@@ -121,18 +121,24 @@
 }
 
 #reviews-title {
-    position: absolute;
-    bottom: 680px;
-    left: 15px;
-    width: fit-content;
-    height: fit-content;
-    color: greenyellow;
+    display: flex;
 }
 
-#add-review-button {
-    position: absolute;
-    bottom: 705px;
-    left: 150px;
-    width: 60px;
+#reviews-title > h1 {
+    margin-bottom: -5px;
+    margin-left: 15px;
+}
+
+#reviews-title > button {
     height: 40px;
+    width: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 15px;
+    border: none;
+}
+
+#reviews-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }

@@ -49,14 +49,18 @@ function SpotDetails() {
                 </div>
             </div>
             <div id='reviews-div'>
-                <h1 id='reviews-title'>Reviews</h1>
-                {sessionUser && ((sessionUser?.id !== host.id) && (<button id='add-review-button' onClick={() => setShowModal(true)}>Add</button>))}
+                <div id='reviews-title'>
+                    <h1>Reviews</h1>
+                    {sessionUser && ((sessionUser?.id !== host.id) && (<button onClick={() => setShowModal(true)}>Add</button>))}
+                </div>
                 { showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <AddReviewModal spotInfo={spotInfo}/>
                     </Modal>
                 )}
-                { reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) }
+                <div id='reviews-list'>
+                    { reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) }
+                </div>
             </div>
             <div id='map-div'>
                 <h1>Map</h1>

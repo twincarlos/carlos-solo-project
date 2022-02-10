@@ -18,11 +18,11 @@ function SpotsGallery() {
             <h1>Spots Gallery</h1>
             <ul id='states-nav'>
                 <li>All</li>
-                {spotList.map(spot => <li key={`${spot.id}`}>{spot.state}</li>)}
+                {spotList.map((spot, idx) => (idx < 10) && (spot && (<li key={`${spot.id}`}>{spot.state}</li>)))}
                 <li>Filters</li>
             </ul>
             <div className='spots-container'>
-                {spotList.map(spot => <SpotWidget key={`${spot.id}`} spot={spot}/>)}
+                {spotList.map(spot => spot && (<SpotWidget key={`${spot.id}`} spot={spot}/>))}
             </div>
         </>
     );

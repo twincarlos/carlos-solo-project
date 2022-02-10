@@ -70,14 +70,14 @@
 }
 
 #upper-form > #check-in > input {
-    width: 100%;
+    width: 180px;
     height: 50px;
     border-top-left-radius: 10px;
     border: 1px solid gray;
 }
 
 #upper-form > #check-out > input {
-    width: 98%;
+    width: 175px;
     height: 50px;
     border-top-right-radius: 10px;
     border: 1px solid gray;

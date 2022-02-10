@@ -28,7 +28,6 @@ function BookingSearchBar () {
         if (errArr.length === 0) {
             history.push('/spots');
         }
-
     }
 
     return (

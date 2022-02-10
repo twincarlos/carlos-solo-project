@@ -11,8 +11,7 @@ function EditSpotModal({ spot }) {
     const [description, setDescription] = useState(spot.spot.description);
     const [image, setImage] = useState(spot.spot.image);
     const [errors, setErrors] = useState('');
-    const [success, setSuccess] = useState(false);
-    const { setNewName, setNewDescription, setNewPrice, setNewNumOfGuests, newImage, setNewImage } = useContext(SpotContext);
+    const { setNewName, setNewDescription, setNewPrice, setNewNumOfGuests, setNewImage } = useContext(SpotContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,14 +34,13 @@ function EditSpotModal({ spot }) {
                 description,
                 image
             }
-            setNewName(name)
-            setNewDescription(description)
-            setNewPrice(price)
-            setNewNumOfGuests(numOfGuests)
-            setNewImage(image)
-            setSuccess(true);
+            setNewName(name);
+            setNewDescription(description);
+            setNewPrice(price);
+            setNewNumOfGuests(numOfGuests);
+            setNewImage(image);
+            spot.setEditModal(false);
             return dispatch(updateOneSpot(newSpot));
-            // return window.location.reload(true);
         }
     }
 
@@ -50,7 +48,6 @@ function EditSpotModal({ spot }) {
         <div id='edit-form-modal'>
             <h1>Edit me!</h1>
             { errors && <ul id='edit-spot-errors'>{errors.map((err, i) => <li key={i}>{err}</li>)}</ul> }
-            { success && <h2 id='success'>Success!</h2>}
             <form id='edit-spot-form' onSubmit={handleSubmit}>
                 <label>
                     Name:

@@ -11,7 +11,7 @@ function EditMe ({ spot }) {
         <>
             {editModal && (
                 <Modal onClose={() => setEditModal(false)}>
-                    <EditSpotModal spot={{ spot }}/>
+                    <EditSpotModal spot={{ spot, setEditModal }}/>
                 </Modal>
             )}
             {deleteModal && (

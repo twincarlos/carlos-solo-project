@@ -20,6 +20,7 @@
     background-color: crimson;
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
+    height: 500px;
 }
 
 #details-div > #details {
@@ -101,14 +102,15 @@
     background-color: darkcyan;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 50px;
+    height: auto;
     /* padding: 10px; */
 }
 
 #map-div {
     background-color: gold;
+    height: 500px;
 }
-
-
 
 .review-container {
     background-color: white;
@@ -116,4 +118,11 @@
     margin: 10px;
     border-radius: 20px;
     padding: 10px;
+}
+
+#reviews-title {
+    position: absolute;
+    bottom: 375px;
+    left: 15px;
+    color: greenyellow;
 }

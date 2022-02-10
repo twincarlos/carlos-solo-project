@@ -5,6 +5,7 @@ import { getOneSpot } from '../../store/spot';
 import BookMe from './BookMe';
 import EditMe from './EditMe';
 import Review from './Review';
+import AddReview from './AddReview';
 
 import './SpotDetails.css';
 
@@ -45,7 +46,9 @@ function SpotDetails() {
                 </div>
             </div>
             <div id='reviews-div'>
-                {reviews.length ? reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) : <h2>No reviews yet</h2>}
+                <h1 id='reviews-title'>Reviews</h1>
+                <AddReview />
+                { reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) }
             </div>
             <div id='map-div'>
                 <h1>Map</h1>

@@ -1,5 +1,18 @@
 const { Review } = require('./models');
 
+async function createReview (review) {
+    const { spotId, userId, reviewText, rating } = review;
+
+    const newReview = await Review.create({
+        spotId,
+        userId,
+        review: reviewText,
+        rating
+    });
+
+    return await newReview.save();
+}
+
 async function updateReview(data) {
     const { id, review, rating } = data;
     const reviewToEdit = await Review.findByPk(id);
@@ -13,4 +26,4 @@ async function deleteReview(id) {
     return await review.destroy();
 }
 
-module.exports = { updateReview, deleteReview };
+module.exports = { createReview, updateReview, deleteReview };

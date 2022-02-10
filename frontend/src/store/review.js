@@ -1,6 +1,14 @@
 import { csrfFetch } from "./csrf";
+const CREATE_REVIEW = 'review/CREATE_REVIEW';
 const UPDATE_REVIEW = 'review/UPDATE_REVIEW';
 const DELETE_REVIEW = 'review/DELETE_REVIEW';
+
+const createReview = (newReview) => {
+    return {
+        type: CREATE_REVIEW,
+        newReview
+    }
+}
 
 const updateReview = (review) => {
     return {
@@ -14,6 +22,17 @@ const deleteReview = (review) => {
         type: DELETE_REVIEW,
         review
     }
+}
+
+export const createOneReview = (newReview) => async (dispatch) => {
+    const response = await csrfFetch('/api/reviews', {
+        method: 'POST',
+        body: JSON.stringify(newReview)
+    });
+
+    const data = await response.json();
+    dispatch(createReview(data));
+    return data;
 }
 
 export const updateOneReview = (data) => async (dispatch) => {
@@ -47,6 +66,10 @@ const initialState = {};
 
 const reviewsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case CREATE_REVIEW: {
+            const newState = { ...state, review: action.review };
+            return newState;
+        }
         case UPDATE_REVIEW: {
             const newState = {...state};
             return newState;

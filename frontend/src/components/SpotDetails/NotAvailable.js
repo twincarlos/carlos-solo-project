@@ -1,45 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { BookingContext } from '../../context/BookingContext';
+import { deleteOneBooking } from '../../store/booking';
 
 function NotAvailable ({spotNotAvail}) {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const { checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests } = useContext(BookingContext);
-    const [errors, setErrors] = useState([]);
-    const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
+    const handleCancel = (e) => {
         e.preventDefault();
-
-        const errArr = [];
-
-        const now = Date.now();
-        const checkinTime = (new Date(checkIn)).getTime();
-        const checkoutTime = (new Date(checkOut)).getTime();
-
-        if (checkinTime > checkoutTime || now > checkinTime) errArr.push('Enter a valid check-in and check-out time.');
-        if (numOfGuests < 1) errArr.push('Enter at least 1 guest.');
-        if (numOfGuests > spotNotAvail.numOfGuests) errArr.push(`Only ${spotNotAvail.numOfGuests} allowed.`);
-
-        setErrors(errArr);
-
-        if (!errArr.length) {
-            const newBooking = {
-                spotId: spotNotAvail.id,
-                userId: sessionUser.id,
-                checkIn,
-                checkOut
-            }
-            // dispatch(createOneBooking(newBooking));
-            console.log(newBooking);
-        }
+        dispatch(deleteOneBooking(spotNotAvail.id));
     }
 
     return (
         <>
             <h2>Spot not available on these dates.</h2>
                 <p>Change your dates:</p>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <span id='upper-form'>
                             <label id='check-in'>
                                 Check-in
@@ -57,7 +35,9 @@ function NotAvailable ({spotNotAvail}) {
                     (
                         <div id='booking-div'>
                             <p>Or cancel your booking:</p>
-                            <button id='cancel-book-button'>Cancel Booking</button>
+                            <form onSubmit={handleCancel}>
+                                <button id='cancel-book-button'>Cancel Booking</button>
+                            </form>
                         </div>
                     )
             }

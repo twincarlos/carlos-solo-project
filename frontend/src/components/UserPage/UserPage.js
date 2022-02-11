@@ -43,7 +43,6 @@ function UserPage() {
     }
 
     renderBookingList = () => {
-        console.log(bookingList);
         return (
             <ul>
                 { bookingList.map((bookingInfo) => <BookingWidget key={`${bookingInfo.booking.id}`} bookingInfo={bookingInfo}/>) }

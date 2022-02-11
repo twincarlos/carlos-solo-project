@@ -27,4 +27,9 @@ async function createBooking(booking) {
     return newBooking;
 }
 
-module.exports = { getBookingsFromUserId, getBookingByPk, createBooking };
+async function deleteBooking(id) {
+    const booking = await Booking.findByPk(id);
+    return await booking.destroy();
+}
+
+module.exports = { getBookingsFromUserId, getBookingByPk, createBooking, deleteBooking };

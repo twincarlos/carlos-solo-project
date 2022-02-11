@@ -19,4 +19,10 @@ router.post('/', async (req, res) => {
     return res.json(newBooking);
 });
 
+router.delete('/', async (req, res) => {
+    const { id } = req.body;
+    const booking = await BookingRepository.deleteBooking(id);
+    return res.json(booking);
+});
+
 module.exports = router;

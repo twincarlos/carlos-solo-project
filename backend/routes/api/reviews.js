@@ -15,8 +15,9 @@ router.put('/', async (req, res) => {
     return res.json(newReview);
 });
 
-router.delete('/:id', async (req, res) => {
-    const review = await ReviewRepository.deleteReview(req.params.id);
+router.delete('/', async (req, res) => {
+    const { id } = req.body;
+    const review = await ReviewRepository.deleteReview(id);
     return res.json(review);
 });
 

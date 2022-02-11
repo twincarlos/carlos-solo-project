@@ -52,8 +52,12 @@ export const updateOneReview = (data) => async (dispatch) => {
 }
 
 export const deleteOneReview = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/reviews/${id}`, {
-        method: 'DELETE'
+    const response = await csrfFetch('/api/reviews', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id})
     });
 
     if (response.ok) {

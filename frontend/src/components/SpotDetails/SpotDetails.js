@@ -49,7 +49,7 @@ function SpotDetails() {
     renderBookingForm = () => {
         return (
             <div id='booking-div'>
-                { (sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} bookedSpot={bookedSpot} /> }
+                { (sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} bookedSpot={bookedSpot} render={render} setRender={setRender}/> }
             </div>
         );
     }

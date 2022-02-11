@@ -5,36 +5,22 @@ import { createOneBooking } from '../../store/booking';
 import { updateOneBooking } from '../../store/booking';
 import NotAvailable from './NotAvailable';
 
-function BookMe ({ spot, bookedSpot }) {
+function BookMe ({ spot, bookedSpot, render, setRender }) {
     const { checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests } = useContext(BookingContext);
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    // const [clearInterval, setClearInterval] = useState(false);
     let spotNotAvail;
-
-    // const bookingToTrack = (booking) => {
-    //     const now = Date.now();
-    //     if (now >= (new Date(booking.checkOut)).getTime()) {
-    //         console.log('YOUR TIME HAS RAN OUT!');
-    //         dispatch(updateOneBooking(booking.id));
-    //     } else {
-    //         console.log('keep tracking');
-    //     }
-    // }
-
     const trackBooking = (booking) => {
         const trackInterval = setInterval(() => {
             if (Date.now() >= (new Date(booking.checkOut)).getTime()) {
-                console.log('YOUR TIME HAS RAN OUT!');
-                // setClearInterval(true);
                 clearInterval(trackInterval);
+                dispatch(updateOneBooking(booking.id));
+                setRender(!render);
             } else {
                 console.log('...keep tracking...');
             }
         }, 5000);
-
-        // if (clearInterval) clearInterval(trackInterval);
     }
 
     const checkBookedSpot = () => {

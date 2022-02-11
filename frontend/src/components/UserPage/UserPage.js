@@ -20,25 +20,35 @@ function UserPage() {
     const [showModal, setShowModal] = useState(false);
     const [render, setRender] = useState(false);
 
-    let renderList = () => null;
+    let renderSpotList = () => null;
+    let renderBookingList = () => null;
 
     useEffect(() => {
         dispatch(getOneUser(userId));
         dispatch(getAllSpotsByUserId(userId));
         dispatch(getAllBookingsFromUserId(userId));
-        renderList();
+        renderSpotList();
     },[dispatch, userId, render]);
 
     if (!user) {
         return null;
     }
 
-    renderList = () => {
+    renderSpotList = () => {
         return (
-            spotList && (<ul>
+            <ul>
                 { spotList.map((spot) => <SpotWidget key={`${spot.id}`} spot={spot}/>) }
-            </ul>)
+            </ul>
         );
+    }
+
+    renderBookingList = () => {
+        console.log(bookingList);
+        return (
+            <ul>
+                { bookingList.map((bookingInfo) => <BookingWidget key={`${bookingInfo.booking.id}`} bookingInfo={bookingInfo}/>) }
+            </ul>
+            );
     }
 
     return (
@@ -55,11 +65,11 @@ function UserPage() {
             <div id='user-body'>
                 <div id='spot-list'>
                     <h2>Your spots</h2>
-                    {renderList()}
+                    {spotList && (renderSpotList())}
                 </div>
                 <div id='booking-list'>
                     <h2>Your bookings</h2>
-                    {bookingList && (<BookingWidget booking={bookingList ? bookingList[0] : null}/>)}
+                    {bookingList && (renderBookingList())}
                 </div>
             </div>
         </div>

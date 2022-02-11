@@ -59,7 +59,7 @@ function UserPage() {
                 </div>
                 <div id='booking-list'>
                     <h2>Your bookings</h2>
-                    <BookingWidget booking={bookingList? bookingList[0] : null}/>
+                    {bookingList && (<BookingWidget booking={bookingList ? bookingList[0] : null}/>)}
                 </div>
             </div>
         </div>

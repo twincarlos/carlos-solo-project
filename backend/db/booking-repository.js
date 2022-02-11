@@ -1,7 +1,8 @@
 const { User, Spot, Booking } = require('./models');
 
 async function getBookingsFromUserId (userId) {
-    return await Booking.findAll({ where: { userId } });
+    const bookings = await Booking.findAll({ where: { userId }});
+    return await Promise.all(bookings.map(async (booking) => await getBookingByPk(booking.id)));
 }
 
 async function getBookingByPk(id) {

@@ -76,7 +76,7 @@ function SpotDetails() {
                 </div>
                 { showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <AddReviewModal render={render} setRender={setRender} spotInfo={spotInfo}/>
+                        <AddReviewModal render={render} setRender={setRender} spotInfo={spotInfo} setShowModal={setShowModal}/>
                     </Modal>
                 )}
                 {renderReviewsList()}

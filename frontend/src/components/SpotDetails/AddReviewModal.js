@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createOneReview } from '../../store/review';
 
-function AddReviewModal ({ render, setRender, spotInfo }) {
+function AddReviewModal ({ render, setRender, spotInfo, setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [reviewText, setReviewText] = useState('');
@@ -16,6 +16,7 @@ function AddReviewModal ({ render, setRender, spotInfo }) {
             rating
         }
 
+        setShowModal(false);
         setRender(!render);
         return dispatch(createOneReview(newReview));
     }

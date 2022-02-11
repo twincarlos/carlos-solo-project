@@ -21,11 +21,12 @@ function SpotDetails() {
     const { newName, newDescription, newImage } = useContext(SpotContext);
     const [render, setRender] = useState(false);
 
-    let renderList = () => null;
+    let renderReviewsList = () => null;
+    let renderBookingForm = () => null;
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
-        renderList();
+        renderReviewsList();
     }, [dispatch, spotId, render]);
 
 
@@ -37,11 +38,19 @@ function SpotDetails() {
     const host = spotInfo.host;
     const reviews = spotInfo.reviews;
 
-    renderList = () => {
+    renderReviewsList = () => {
         return (
         <div id='reviews-list'>
             { reviews.map((review) =><Review key={`${review.review.id}`} review={review}/>) }
         </div>
+        );
+    }
+
+    renderBookingForm = () => {
+        return (
+            <div id='booking-div'>
+                {(sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
+            </div>
         );
     }
 
@@ -58,9 +67,10 @@ function SpotDetails() {
                     <h1>Hosted by: {host.firstName} {host.lastName}</h1>
                     <p>{newDescription ? newDescription : spot.description}</p>
                 </div>
-                <div id='booking-div'>
+                {/* <div id='booking-div'>
                     {(sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
-                </div>
+                </div> */}
+                {renderBookingForm()}
             </div>
             <div id='reviews-div'>
                 <div id='reviews-title'>
@@ -72,7 +82,7 @@ function SpotDetails() {
                         <AddReviewModal render={render} setRender={setRender} spotInfo={spotInfo}/>
                     </Modal>
                 )}
-                {renderList()}
+                {renderReviewsList()}
             </div>
             <div id='map-div'>
                 <h1>Map</h1>

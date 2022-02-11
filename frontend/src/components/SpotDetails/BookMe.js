@@ -23,7 +23,7 @@ function BookMe ({ spot }) {
 
         setErrors(errArr);
 
-        if (errArr.length === 0 && sessionUser) {
+        if (!errArr.length) {
             const newBooking = {
                 spotId: spot.id,
                 userId: sessionUser.id,

@@ -42,7 +42,7 @@ function NotAvailable ({spotNotAvail}) {
                 (sessionUser?.id === spotNotAvail.userId) &&
                     (
                         <div id='booking-div'>
-                            <p>Update your booking:</p>
+                            <p>Change your dates:</p>
                             <form onSubmit={handleSubmit}>
                                 <span id='upper-form'>
                                     <label id='check-in'>
@@ -55,8 +55,8 @@ function NotAvailable ({spotNotAvail}) {
                                     </label>
                                 </span>
                                 <input id='lower-form' type='number' placeholder='1 guest' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
-                                <button id='book-button' disabled={!sessionUser}>Update Booking</button>
                             </form>
+                            <p>Or cancel your booking:</p>
                             <button id='cancel-book-button'>Cancel Booking</button>
                         </div>
                     )

@@ -25,4 +25,10 @@ router.delete('/', async (req, res) => {
     return res.json(booking);
 });
 
+router.put('/', async (req, res) => {
+    const { id } = req.body;
+    const newBooking = await BookingRepository.updateBooking(id);
+    return res.json(newBooking);
+});
+
 module.exports = router;

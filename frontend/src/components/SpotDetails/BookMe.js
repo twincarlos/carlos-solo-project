@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BookingContext } from '../../context/BookingContext';
 import { createOneBooking } from '../../store/booking';
+import { updateOneBooking } from '../../store/booking';
 import NotAvailable from './NotAvailable';
 
 function BookMe ({ spot, bookedSpot }) {
@@ -9,14 +10,32 @@ function BookMe ({ spot, bookedSpot }) {
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    // const [clearInterval, setClearInterval] = useState(false);
     let spotNotAvail;
 
     // const bookingToTrack = (booking) => {
     //     const now = Date.now();
     //     if (now >= (new Date(booking.checkOut)).getTime()) {
     //         console.log('YOUR TIME HAS RAN OUT!');
+    //         dispatch(updateOneBooking(booking.id));
+    //     } else {
+    //         console.log('keep tracking');
     //     }
     // }
+
+    const trackBooking = (booking) => {
+        const trackInterval = setInterval(() => {
+            if (Date.now() >= (new Date(booking.checkOut)).getTime()) {
+                console.log('YOUR TIME HAS RAN OUT!');
+                // setClearInterval(true);
+                clearInterval(trackInterval);
+            } else {
+                console.log('...keep tracking...');
+            }
+        }, 5000);
+
+        // if (clearInterval) clearInterval(trackInterval);
+    }
 
     const checkBookedSpot = () => {
         if (bookedSpot.length === 0) {
@@ -32,6 +51,7 @@ function BookMe ({ spot, bookedSpot }) {
             if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckOutTime)) || ((desiredCheckOutTime <= bookedCheckOutTime) && (desiredCheckOutTime >= bookedCheckInTime))) {
                 spotNotAvail = bookedSpot[i];
                 // setInterval(() => bookingToTrack(spotNotAvail), 5000);
+                trackBooking(bookedSpot[i]);
                 return false;
             }
         }

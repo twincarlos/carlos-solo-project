@@ -1,4 +1,5 @@
 const { User, Spot, Booking } = require('./models');
+const { updateReview } = require('./review-repository');
 
 async function getBookingsFromUserId (userId) {
     const bookings = await Booking.findAll({ where: { userId }});
@@ -32,4 +33,10 @@ async function deleteBooking(id) {
     return await booking.destroy();
 }
 
-module.exports = { getBookingsFromUserId, getBookingByPk, createBooking, deleteBooking };
+async function updateBooking(id) {
+    const bookingToUpdate = await Booking.findByPk(id);
+    const newBooking = await bookingToUpdate.update({ booked: true });
+    return newBooking;
+}
+
+module.exports = { getBookingsFromUserId, getBookingByPk, createBooking, deleteBooking, updateBooking };

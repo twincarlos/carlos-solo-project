@@ -1,11 +1,13 @@
 import { useState, useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BookingContext } from '../../context/BookingContext';
+import { createOneBooking } from '../../store/booking';
 
 function BookMe ({ spot }) {
     const { checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests } = useContext(BookingContext);
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,14 +24,13 @@ function BookMe ({ spot }) {
         setErrors(errArr);
 
         if (errArr.length === 0 && sessionUser) {
-            const booking = {
+            const newBooking = {
                 spotId: spot.id,
                 userId: sessionUser.id,
                 checkIn,
-                checkOut,
-                status: 'booked'
+                checkOut
             }
-            console.log(booking);
+            dispatch(createOneBooking(newBooking));
         }
     }
 

@@ -13,4 +13,10 @@ router.get('/:id', async (req, res) => {
     return res.json(bookingInfo);
 });
 
+router.post('/', async (req, res) => {
+    const { spotId, userId, checkIn, checkOut } = req.body;
+    const newBooking = await BookingRepository.createBooking({ spotId, userId, checkIn, checkOut });
+    return res.json(newBooking);
+});
+
 module.exports = router;

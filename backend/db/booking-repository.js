@@ -12,4 +12,18 @@ async function getBookingByPk(id) {
     return { booking, host, spot };
 }
 
-module.exports = { getBookingsFromUserId, getBookingByPk };
+async function createBooking(booking) {
+    const { spotId, userId, checkIn, checkOut } = booking;
+
+    const newBooking = await Booking.create({
+        spotId,
+        userId,
+        checkIn,
+        checkOut,
+        status: 'upcoming'
+    });
+
+    return newBooking;
+}
+
+module.exports = { getBookingsFromUserId, getBookingByPk, createBooking };

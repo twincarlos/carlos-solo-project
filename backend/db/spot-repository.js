@@ -1,4 +1,4 @@
-const { Spot, User, Review } = require('./models');
+const { Spot, User, Review, Booking } = require('./models');
 
 function positiveOrNegative() {
     const min = 0;
@@ -26,6 +26,10 @@ async function allSpotsByUserId(userId) {
 async function getSpotByPk(id) {
     const spot = await Spot.findByPk(id);
     const host = await User.findByPk(spot.userId);
+    const bookedSpot = await Booking.findOne({ where: {
+        spotId: id,
+        booked: false
+     } });
     const data = await Review.findAll({ where: { spotId: id } });
     const reviews = [];
 
@@ -37,7 +41,7 @@ async function getSpotByPk(id) {
         });
     }
 
-    return { spot, host, reviews };
+    return { spot, host, reviews, bookedSpot };
 }
 
 async function addSpot(spot) {

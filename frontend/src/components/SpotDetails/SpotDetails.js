@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
+import { BookingContext } from '../../context/BookingContext';
 import BookMe from './BookMe';
 import EditMe from './EditMe';
 import Review from './Review';
@@ -13,6 +14,7 @@ import { SpotContext } from '../../context/SpotContext';
 import './SpotDetails.css';
 
 function SpotDetails() {
+    const { checkIn, checkOut } = useContext(BookingContext);
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const spotInfo = useSelector(state => state.spot.spotInfo);
@@ -20,9 +22,11 @@ function SpotDetails() {
     const [showModal, setShowModal] = useState(false);
     const { newName, newDescription, newImage } = useContext(SpotContext);
     const [render, setRender] = useState(false);
+    const [isBooked, setIsBooked] = useState(false);
 
     let renderReviewsList = () => null;
     let renderBookingForm = () => null;
+    let checkBookedSpot = () => null;
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
@@ -37,6 +41,21 @@ function SpotDetails() {
     const spot = spotInfo.spot;
     const host = spotInfo.host;
     const reviews = spotInfo.reviews;
+    const bookedSpot = spotInfo.bookedSpot;
+
+    checkBookedSpot = () => {
+        for (let i = 0; i < bookedSpot.length; i++) {
+            const bookedCheckInTime = (new Date(bookedSpot[0].checkIn)).getTime();
+            const bookedCheckOutTime = (new Date(bookedSpot[0].checkOut)).getTime();
+            const desiredCheckInTime = (new Date(checkIn)).getTime();
+            const desiredCheckOutTime = (new Date(checkOut)).getTime();
+
+            if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckInTime))
+            || (desiredCheckOutTime >= bookedCheckInTime) && (desiredCheckOutTime <= bookedCheckOutTime)) {
+                setIsBooked(true);
+            }
+        }
+    }
 
     renderReviewsList = () => {
         return (

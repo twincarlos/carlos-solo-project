@@ -22,7 +22,7 @@ function SpotDetails() {
     const [showModal, setShowModal] = useState(false);
     const { newName, newDescription, newImage } = useContext(SpotContext);
     const [render, setRender] = useState(false);
-    const [isBooked, setIsBooked] = useState(false);
+    const [isAvailable, setIsAvailable] = useState(true);
 
     let renderReviewsList = () => null;
     let renderBookingForm = () => null;
@@ -31,6 +31,7 @@ function SpotDetails() {
     useEffect(() => {
         dispatch(getOneSpot(spotId));
         renderReviewsList();
+        checkBookedSpot();
     }, [dispatch, spotId, render]);
 
 
@@ -45,14 +46,15 @@ function SpotDetails() {
 
     checkBookedSpot = () => {
         for (let i = 0; i < bookedSpot.length; i++) {
-            const bookedCheckInTime = (new Date(bookedSpot[0].checkIn)).getTime();
-            const bookedCheckOutTime = (new Date(bookedSpot[0].checkOut)).getTime();
+            const bookedCheckInTime = (new Date(bookedSpot[i].checkIn)).getTime();
+            const bookedCheckOutTime = (new Date(bookedSpot[i].checkOut)).getTime();
             const desiredCheckInTime = (new Date(checkIn)).getTime();
             const desiredCheckOutTime = (new Date(checkOut)).getTime();
 
-            if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckInTime))
-            || (desiredCheckOutTime >= bookedCheckInTime) && (desiredCheckOutTime <= bookedCheckOutTime)) {
-                setIsBooked(true);
+            if (((bookedCheckInTime >= desiredCheckInTime) && (bookedCheckInTime <= desiredCheckInTime)) || ((bookedCheckOutTime >= desiredCheckOutTime) && (bookedCheckOutTime <= desiredCheckOutTime))) {
+                setIsAvailable(false);
+            } else {
+                setIsAvailable(true);
             }
         }
     }
@@ -68,7 +70,7 @@ function SpotDetails() {
     renderBookingForm = () => {
         return (
             <div id='booking-div'>
-                {(sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
+                { (sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} isAvailable={isAvailable} /> }
             </div>
         );
     }

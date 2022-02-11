@@ -38,24 +38,24 @@ function NotAvailable ({spotNotAvail}) {
     return (
         <>
             <h2>Spot not available on these dates.</h2>
+                <p>Change your dates:</p>
+                    <form onSubmit={handleSubmit}>
+                        <span id='upper-form'>
+                            <label id='check-in'>
+                                Check-in
+                                <input type='datetime-local' onChange={(e) => setCheckIn(e.target.value)} value={checkIn}></input>
+                            </label>
+                            <label id='check-out'>
+                                Check-out
+                                <input type='datetime-local' onChange={(e) => setCheckOut(e.target.value)} value={checkOut}></input>
+                            </label>
+                        </span>
+                        <input id='lower-form' type='number' placeholder='1 guest' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
+                    </form>
             {
                 (sessionUser?.id === spotNotAvail.userId) &&
                     (
                         <div id='booking-div'>
-                            <p>Change your dates:</p>
-                            <form onSubmit={handleSubmit}>
-                                <span id='upper-form'>
-                                    <label id='check-in'>
-                                        Check-in
-                                        <input type='datetime-local' onChange={(e) => setCheckIn(e.target.value)} value={checkIn}></input>
-                                    </label>
-                                    <label id='check-out'>
-                                        Check-out
-                                        <input type='datetime-local' onChange={(e) => setCheckOut(e.target.value)} value={checkOut}></input>
-                                    </label>
-                                </span>
-                                <input id='lower-form' type='number' placeholder='1 guest' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
-                            </form>
                             <p>Or cancel your booking:</p>
                             <button id='cancel-book-button'>Cancel Booking</button>
                         </div>

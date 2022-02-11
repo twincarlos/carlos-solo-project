@@ -21,7 +21,7 @@
 }
 
 #details-div {
-    background-color: crimson;
+    /* background-color: crimson; */
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
     height: 500px;
@@ -143,4 +143,14 @@
 #reviews-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+#cancel-book-button {
+    background-color: red ;
+    display: block;
+    margin: auto;
+    width: 90%;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
 }

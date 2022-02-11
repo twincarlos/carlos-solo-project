@@ -9,6 +9,7 @@ function BookMe ({ spot, bookedSpot }) {
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    let spotNotAvail;
 
     const checkBookedSpot = () => {
         if (bookedSpot.length === 0) {
@@ -21,6 +22,7 @@ function BookMe ({ spot, bookedSpot }) {
             const desiredCheckOutTime = (new Date(checkOut)).getTime();
 
             if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckOutTime)) || ((desiredCheckOutTime <= bookedCheckOutTime) && (desiredCheckOutTime >= bookedCheckInTime))) {
+                spotNotAvail = bookedSpot[i];
                 return false;
             } else {
                 return true;
@@ -39,6 +41,7 @@ function BookMe ({ spot, bookedSpot }) {
 
         if (checkinTime > checkoutTime || now > checkinTime) errArr.push('Enter a valid check-in and check-out time.');
         if (numOfGuests < 1) errArr.push('Enter at least 1 guest.');
+        if (numOfGuests > spot.numOfGuests) errArr.push(`Only ${spot.numOfGuests} allowed.`);
 
         setErrors(errArr);
 
@@ -78,7 +81,7 @@ function BookMe ({ spot, bookedSpot }) {
                 <h3 id='your-total'>Your total is: ${(((new Date(checkOut)).getTime()) - ((new Date(checkIn)).getTime())) * (spot.price / 86400000)}</h3>
             </>)
             :
-            <NotAvailable />
+            <NotAvailable spotNotAvail={spotNotAvail}/>
     );
 }
 

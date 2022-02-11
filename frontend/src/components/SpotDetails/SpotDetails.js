@@ -38,21 +38,6 @@ function SpotDetails() {
     const reviews = spotInfo.reviews;
     const bookedSpot = spotInfo.bookedSpot;
 
-    // checkBookedSpot = () => {
-    //     for (let i = 0; i < bookedSpot.length; i++) {
-    //         const bookedCheckInTime = (new Date(bookedSpot[i].checkIn)).getTime();
-    //         const bookedCheckOutTime = (new Date(bookedSpot[i].checkOut)).getTime();
-    //         const desiredCheckInTime = (new Date(checkIn)).getTime();
-    //         const desiredCheckOutTime = (new Date(checkOut)).getTime();
-
-    //         if (((desiredCheckOutTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckInTime)) || ((desiredCheckOutTime >= bookedCheckOutTime) && (desiredCheckOutTime <= bookedCheckOutTime))) {
-    //             setIsAvailable(false);
-    //         } else {
-    //             setIsAvailable(true);
-    //         }
-    //     }
-    // }
-
     renderReviewsList = () => {
         return (
         <div id='reviews-list'>

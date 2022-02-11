@@ -20,7 +20,7 @@ function SpotDetails() {
     const [showModal, setShowModal] = useState(false);
     const { newName, newDescription, newImage } = useContext(SpotContext);
     const [render, setRender] = useState(false);
-
+;
     let renderReviewsList = () => null;
     let renderBookingForm = () => null;
     useEffect(() => {

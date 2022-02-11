@@ -11,10 +11,18 @@ function BookMe ({ spot, bookedSpot }) {
     const dispatch = useDispatch();
     let spotNotAvail;
 
+    // const bookingToTrack = (booking) => {
+    //     const now = Date.now();
+    //     if (now >= (new Date(booking.checkOut)).getTime()) {
+    //         console.log('YOUR TIME HAS RAN OUT!');
+    //     }
+    // }
+
     const checkBookedSpot = () => {
         if (bookedSpot.length === 0) {
             return true;
         }
+
         for (let i = 0; i < bookedSpot.length; i++) {
             const bookedCheckInTime = (new Date(bookedSpot[i].checkIn)).getTime();
             const bookedCheckOutTime = (new Date(bookedSpot[i].checkOut)).getTime();
@@ -23,11 +31,11 @@ function BookMe ({ spot, bookedSpot }) {
 
             if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckOutTime)) || ((desiredCheckOutTime <= bookedCheckOutTime) && (desiredCheckOutTime >= bookedCheckInTime))) {
                 spotNotAvail = bookedSpot[i];
+                // setInterval(() => bookingToTrack(spotNotAvail), 5000);
                 return false;
-            } else {
-                return true;
             }
         }
+        return true;
     }
 
     const handleSubmit = (e) => {

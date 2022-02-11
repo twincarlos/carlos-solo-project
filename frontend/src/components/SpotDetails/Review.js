@@ -30,7 +30,7 @@ function Review ({ review }) {
     }
 
     return (
-        text &&
+        // text &&
         (<div className='review-container'>
             <h3>{author.firstName} {author.lastName} said:</h3>
             {

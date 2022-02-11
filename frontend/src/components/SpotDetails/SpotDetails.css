@@ -154,3 +154,7 @@
     border: none;
     border-radius: 15px;
 }
+
+.review-spot-widget {
+    background-color: red;
+}

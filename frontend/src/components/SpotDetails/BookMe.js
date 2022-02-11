@@ -36,7 +36,6 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
 
             if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckOutTime)) || ((desiredCheckOutTime <= bookedCheckOutTime) && (desiredCheckOutTime >= bookedCheckInTime))) {
                 spotNotAvail = bookedSpot[i];
-                // setInterval(() => bookingToTrack(spotNotAvail), 5000);
                 trackBooking(bookedSpot[i]);
                 return false;
             }
@@ -66,6 +65,7 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
                 checkIn,
                 checkOut
             }
+            setRender(!render);
             dispatch(createOneBooking(newBooking));
         }
     }
@@ -95,7 +95,7 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
                 <h3 id='your-total'>Your total is: ${(((new Date(checkOut)).getTime()) - ((new Date(checkIn)).getTime())) * (spot.price / 86400000)}</h3>
             </>)
             :
-            <NotAvailable spotNotAvail={spotNotAvail}/>
+            <NotAvailable spotNotAvail={spotNotAvail} render={render} setRender={setRender}/>
     );
 }
 

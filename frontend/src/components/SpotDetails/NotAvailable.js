@@ -3,13 +3,14 @@ import { useContext } from 'react';
 import { BookingContext } from '../../context/BookingContext';
 import { deleteOneBooking } from '../../store/booking';
 
-function NotAvailable ({spotNotAvail}) {
+function NotAvailable ({spotNotAvail, render, setRender}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const { checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests } = useContext(BookingContext);
 
     const handleCancel = (e) => {
         e.preventDefault();
+        setRender(!render);
         dispatch(deleteOneBooking(spotNotAvail.id));
     }
 

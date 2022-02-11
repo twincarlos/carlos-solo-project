@@ -11,6 +11,7 @@ function Review ({ review }) {
     const [text, setText] = useState(myReview.review);
     const [rating, setRating] = useState(myReview.rating);
     const [error, setError] = useState(false);
+    const [keep, setKeep] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
 
     const handleEdit = () => {
@@ -26,11 +27,12 @@ function Review ({ review }) {
         setText(null);
         setRating(null);
         setRemove(false);
+        setKeep(false);
         return dispatch(deleteOneReview(myReview.id));
     }
 
     return (
-        // text &&
+        keep &&
         (<div className='review-container'>
             <h3>{author.firstName} {author.lastName} said:</h3>
             {

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import { BookingContext } from '../../context/BookingContext';
 import BookMe from './BookMe';
 import EditMe from './EditMe';
 import Review from './Review';
@@ -14,7 +13,6 @@ import { SpotContext } from '../../context/SpotContext';
 import './SpotDetails.css';
 
 function SpotDetails() {
-    const { checkIn, checkOut } = useContext(BookingContext);
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const spotInfo = useSelector(state => state.spot.spotInfo);
@@ -22,16 +20,12 @@ function SpotDetails() {
     const [showModal, setShowModal] = useState(false);
     const { newName, newDescription, newImage } = useContext(SpotContext);
     const [render, setRender] = useState(false);
-    const [isAvailable, setIsAvailable] = useState(true);
 
     let renderReviewsList = () => null;
     let renderBookingForm = () => null;
-    let checkBookedSpot = () => null;
-
     useEffect(() => {
         dispatch(getOneSpot(spotId));
         renderReviewsList();
-        checkBookedSpot();
     }, [dispatch, spotId, render]);
 
 
@@ -44,20 +38,20 @@ function SpotDetails() {
     const reviews = spotInfo.reviews;
     const bookedSpot = spotInfo.bookedSpot;
 
-    checkBookedSpot = () => {
-        for (let i = 0; i < bookedSpot.length; i++) {
-            const bookedCheckInTime = (new Date(bookedSpot[i].checkIn)).getTime();
-            const bookedCheckOutTime = (new Date(bookedSpot[i].checkOut)).getTime();
-            const desiredCheckInTime = (new Date(checkIn)).getTime();
-            const desiredCheckOutTime = (new Date(checkOut)).getTime();
+    // checkBookedSpot = () => {
+    //     for (let i = 0; i < bookedSpot.length; i++) {
+    //         const bookedCheckInTime = (new Date(bookedSpot[i].checkIn)).getTime();
+    //         const bookedCheckOutTime = (new Date(bookedSpot[i].checkOut)).getTime();
+    //         const desiredCheckInTime = (new Date(checkIn)).getTime();
+    //         const desiredCheckOutTime = (new Date(checkOut)).getTime();
 
-            if (((bookedCheckInTime >= desiredCheckInTime) && (bookedCheckInTime <= desiredCheckInTime)) || ((bookedCheckOutTime >= desiredCheckOutTime) && (bookedCheckOutTime <= desiredCheckOutTime))) {
-                setIsAvailable(false);
-            } else {
-                setIsAvailable(true);
-            }
-        }
-    }
+    //         if (((desiredCheckOutTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckInTime)) || ((desiredCheckOutTime >= bookedCheckOutTime) && (desiredCheckOutTime <= bookedCheckOutTime))) {
+    //             setIsAvailable(false);
+    //         } else {
+    //             setIsAvailable(true);
+    //         }
+    //     }
+    // }
 
     renderReviewsList = () => {
         return (
@@ -70,7 +64,7 @@ function SpotDetails() {
     renderBookingForm = () => {
         return (
             <div id='booking-div'>
-                { (sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} isAvailable={isAvailable} /> }
+                { (sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} bookedSpot={bookedSpot} /> }
             </div>
         );
     }
@@ -88,9 +82,6 @@ function SpotDetails() {
                     <h1>Hosted by: {host.firstName} {host.lastName}</h1>
                     <p>{newDescription ? newDescription : spot.description}</p>
                 </div>
-                {/* <div id='booking-div'>
-                    {(sessionUser?.id === host.id) ? <EditMe spot={spot} /> : <BookMe spot={spot} />}
-                </div> */}
                 {renderBookingForm()}
             </div>
             <div id='reviews-div'>

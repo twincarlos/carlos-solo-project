@@ -82,7 +82,6 @@ async function updateSpot(data) {
 async function deleteSpot(spotId) {
     const spot = await Spot.findByPk(spotId);
 
-    // await Item.destroy({ where: { id: item.id }});
     return await spot.destroy();
 }
 

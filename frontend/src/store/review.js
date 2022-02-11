@@ -1,7 +1,15 @@
 import { csrfFetch } from "./csrf";
+const ALL_REVIEWS_FROM_USERID = 'review/ALL_REVIEWS_FROM_USERID';
 const CREATE_REVIEW = 'review/CREATE_REVIEW';
 const UPDATE_REVIEW = 'review/UPDATE_REVIEW';
 const DELETE_REVIEW = 'review/DELETE_REVIEW';
+
+const allReviewsFromUserId = (reviews) => {
+    return {
+        type: ALL_REVIEWS_FROM_USERID,
+        reviews
+    }
+}
 
 const createReview = (newReview) => {
     return {
@@ -21,6 +29,17 @@ const deleteReview = (review) => {
     return {
         type: DELETE_REVIEW,
         review
+    }
+}
+
+export const getAllReviewsFromUserId = (userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/all/${userId}`);
+
+    if (response.ok) {
+        const reviews = await response.json();
+
+        dispatch(allReviewsFromUserId(reviews));
+        return reviews;
     }
 }
 
@@ -70,6 +89,10 @@ const initialState = {};
 
 const reviewsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ALL_REVIEWS_FROM_USERID: {
+            const newState = { ...state, reviewList: action.reviews};
+            return newState;
+        }
         case CREATE_REVIEW: {
             const newState = { ...state, review: action.review };
             return newState;

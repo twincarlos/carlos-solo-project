@@ -3,6 +3,11 @@ const ReviewRepository = require('../../db/review-repository');
 
 const router = express.Router();
 
+router.get('/all/:userId', async (req, res) => {
+    const reviewList = await ReviewRepository.allReviewsByUserId(req.params.userId);
+    return res.json(reviewList);
+});
+
 router.post('/', async (req, res) => {
     const { spotId, userId, reviewText, rating} = req.body;
     const newReview = await ReviewRepository.createReview({ spotId, userId, reviewText, rating});

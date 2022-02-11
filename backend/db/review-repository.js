@@ -13,6 +13,11 @@ async function createReview (review) {
     return await newReview.save();
 }
 
+async function allReviewsByUserId(userId) {
+    const allReviews = await Review.findAll({ where: { userId } });
+    return allReviews;
+}
+
 async function updateReview(data) {
     const { id, review, rating } = data;
     const reviewToEdit = await Review.findByPk(id);
@@ -26,4 +31,4 @@ async function deleteReview(id) {
     return await review.destroy();
 }
 
-module.exports = { createReview, updateReview, deleteReview };
+module.exports = { allReviewsByUserId, createReview, updateReview, deleteReview };

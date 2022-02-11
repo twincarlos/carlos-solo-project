@@ -26,7 +26,7 @@ async function allSpotsByUserId(userId) {
 async function getSpotByPk(id) {
     const spot = await Spot.findByPk(id);
     const host = await User.findByPk(spot.userId);
-    const bookedSpot = await Booking.findOne({ where: {
+    const bookedSpot = await Booking.findAll({ where: {
         spotId: id,
         booked: false
      } });

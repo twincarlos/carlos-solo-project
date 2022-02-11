@@ -9,19 +9,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       spotId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       userId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       checkIn: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       checkOut: {
+        allowNull: false,
         type: Sequelize.DATE
       },
-      status: {
-        type: Sequelize.STRING
+      booked: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

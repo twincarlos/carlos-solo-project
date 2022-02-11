@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: { allowNull: false, type: DataTypes.INTEGER, references: { model: 'Users' } },
     checkIn: { allowNull: false, type: DataTypes.DATE },
     checkOut: { allowNull: false, type: DataTypes.DATE },
-    status: { allowNull: false, type: DataTypes.STRING }
+    booked: { allowNull: false, type: DataTypes.BOOLEAN }
   }, {});
   Booking.associate = function(models) {
     // associations can be defined here

@@ -25,9 +25,9 @@ module.exports = {
       Example:
       */
     return queryInterface.bulkInsert('Bookings', [
-      { spotId: 1, userId: 2, checkIn: checkIn(), checkOut: checkOut(), status: 'booked', createdAt: new Date(), updatedAt: new Date() },
-      { spotId: 3, userId: 3, checkIn: checkIn(), checkOut: checkOut(), status: 'booked', createdAt: new Date(), updatedAt: new Date() },
-      { spotId: 7, userId: 1, checkIn: checkIn(), checkOut: checkOut(), status: 'booked', createdAt: new Date(), updatedAt: new Date() },
+      { spotId: 1, userId: 2, checkIn: checkIn(), checkOut: checkOut(), booked: true, createdAt: new Date(), updatedAt: new Date() },
+      { spotId: 3, userId: 3, checkIn: checkIn(), checkOut: checkOut(), booked: true, createdAt: new Date(), updatedAt: new Date() },
+      { spotId: 7, userId: 1, checkIn: checkIn(), checkOut: checkOut(), booked: true, createdAt: new Date(), updatedAt: new Date() },
     ], {});
   },
 

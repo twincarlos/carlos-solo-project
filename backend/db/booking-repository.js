@@ -21,7 +21,7 @@ async function createBooking(booking) {
         userId,
         checkIn,
         checkOut,
-        status: 'upcoming'
+        booked: false
     });
 
     return newBooking;

@@ -10,3 +10,17 @@ a {
 button, a {
     cursor: pointer;
 }
+
+body {
+    background-color: #1C1C1C;
+}
+
+h1 {
+    color: #CF9400;
+    font-family: 'Rubik', sans-serif;
+}
+
+p {
+    color: white;
+    font-family: 'Rubik', sans-serif;
+}

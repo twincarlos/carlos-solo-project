@@ -39,6 +39,9 @@ function UserPage() {
         return null;
     }
 
+    const userJoined = (new Date(user?.createdAt)).toString();
+    const userUpdated = (new Date(user?.updatedAt)).toString();
+
     renderSpotList = () => {
         return (
             <ul>
@@ -66,8 +69,13 @@ function UserPage() {
     return (
         <div id='user-main-div'>
             <div id='user-header'>
-                <h1>{user.firstName} {user.lastName}</h1>
-                <button onClick={() => setShowModal(true)}>Create Spot</button>
+                <span>
+                    <h1>{user.firstName} {user.lastName}</h1>
+                    <h2>Joined on {`${userJoined.split(' ')[1]} ${userJoined.split(' ')[2]}, ${userJoined.split(' ')[3]}`}</h2>
+                    {user.isHost && <h2>Host since {`${userUpdated.split(' ')[1]} ${userUpdated.split(' ')[2]}, ${userUpdated.split(' ')[3]}`}</h2>}
+                </span>
+                <img src={user.image} alt=''></img>
+                {/* <button onClick={() => setShowModal(true)}>Create Spot</button> */}
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <CreateSpotModal render={render} setRender={setRender} setShowModal={setShowModal} />

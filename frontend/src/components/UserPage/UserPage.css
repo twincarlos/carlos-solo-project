@@ -1,9 +1,11 @@
 #user-main-div {
     position: relative;
+    margin: 80px auto;
     height: auto;
     top: 70px;
     display: grid;
     grid-template-rows: 0.2fr 0.8fr;
+    width: 60%;
 }
 
 #spot-list {
@@ -11,11 +13,28 @@
 }
 
 #user-header {
-    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}
+
+#user-header > span {
+    margin: auto 20px;
+    text-align: right;
+    line-height: 10px;
+    color: white;
+}
+
+#user-header > span > h1 {
+    font-size: 100px;
+}
+
+#user-header > img {
+    width: 400px;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(207, 148, 0, 0.377);
 }
 
 #user-body {
-    background-color: blueviolet;
     display: grid;
     grid-template-columns: 0.5fr 1fr 0.5fr;
 }

@@ -42,7 +42,7 @@ function UserPage() {
     renderSpotList = () => {
         return (
             <ul>
-                { spotList.map((spot) => <SpotWidget key={`${spot.id}`} spot={spot}/>) }
+                { spotList?.map((spot) => <SpotWidget key={`${spot.id}`} spot={spot}/>) }
             </ul>
         );
     }

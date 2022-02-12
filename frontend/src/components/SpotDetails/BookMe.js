@@ -54,7 +54,7 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
 
         if (checkinTime > checkoutTime || now > checkinTime) errArr.push('Enter a valid check-in and check-out time.');
         if (numOfGuests < 1) errArr.push('Enter at least 1 guest.');
-        if (numOfGuests > spot.numOfGuests) errArr.push(`Only ${spot.numOfGuests} allowed.`);
+        if (numOfGuests > spot.numOfGuests) errArr.push(`Only ${spot.numOfGuests} guests allowed.`);
 
         setErrors(errArr);
 

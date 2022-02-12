@@ -70,7 +70,7 @@ function SpotDetails() {
             </div>
             <div id='details-div'>
                 <div id='details'>
-                    <span id='span-test'>
+                    <span>
                         <p>Hosted by:</p>
                         <span id='host-details'>
                             <NavLink to={`/users/${host.id}`}>

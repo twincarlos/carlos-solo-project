@@ -10,6 +10,7 @@ function Review ({ review }) {
     const [remove, setRemove] = useState(false);
     const [text, setText] = useState(myReview.review);
     const [rating, setRating] = useState(myReview.rating);
+    const [updated, setUpdated] = useState(myReview.updatedAt);
     const [error, setError] = useState(false);
     const [keep, setKeep] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
@@ -22,6 +23,7 @@ function Review ({ review }) {
 
     const handleEdit = () => {
         if (text.length >= 5) {
+            setUpdated(`${((new Date()).toString()).split(' ')[1]} ${((new Date()).toString()).split(' ')[2]}`);
             setEdit(false);
             return dispatch(updateOneReview({id: myReview.id, review: text, rating: rating}));
         } else {
@@ -40,18 +42,27 @@ function Review ({ review }) {
     return (
         keep &&
         (<div className='review-container'>
-            <h3>{author.firstName} {author.lastName} said:</h3>
+            <div className='author-review'>
+                <img className='author-image' src={author.image}></img>
+                <span>
+                    <h3>{author.firstName} {author.lastName}</h3>
+                    <p>{`${((new Date(updated)).toString()).split(' ')[1]} ${((new Date(updated)).toString()).split(' ')[2]}`}</p>
+                </span>
+            </div>
             {
                 edit ?
-                <>
+                <div className='edit-review-div'>
                     {error && <p>Enter at least 5 characters</p>}
                     <textarea defaultValue={text} onChange={(e) => setText(e.target.value)}></textarea>
-                    <input type='number' defaultValue={rating} onChange={(e) => setRating(e.target.value)}></input>
-                </>
+                    <span className='rating-range'>
+                        <input type='range' defaultValue={rating} min={1} max={5} onChange={(e) => setRating(e.target.value)}></input>
+                        <p>{rating}</p>
+                    </span>
+                </div>
                 :
                 <>
                     <p>{text}</p>
-                    <p>{rating}</p>
+                    <p><i className="fas fa-star"></i> {rating}</p>
                 </>
             }
             {

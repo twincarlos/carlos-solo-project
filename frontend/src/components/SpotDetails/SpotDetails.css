@@ -17,7 +17,7 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 2px solid gold;
+    border: 2px solid #EDA800;
 }
 
 #host-details {
@@ -28,12 +28,12 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     line-height: 10px;
     margin: -5px 10px;
     font-size: 25px;
-    color: gold;
+    color: #EDA800;
 }
 
 #img-div > img {
-    box-shadow: 0 0 50px goldenrod;
-    border: 5px solid goldenrod;
+    box-shadow: 0 0 50px #EDA800;
+    border: 5px solid #EDA800;
     border-radius: 30px;
     width: 100%;
 }
@@ -42,6 +42,8 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
     height: 300px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #EDA800;
 }
 
 #edit-delete-spot {
@@ -140,7 +142,7 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
 
 #book-button {
     transition: backround-color .5s;
-    background-color: gold;
+    background-color: #EDA800;
     display: block;
     margin: auto;
     width: 100%;
@@ -150,7 +152,7 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
 }
 
 #book-button:hover {
-    background-color: goldenrod;
+    background-color: #EDA800;
 }
 
 #your-total {
@@ -160,6 +162,8 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
 
 #reviews-div {
     height: auto;
+    border-bottom: 1px solid #EDA800;
+
 }
 
 #map-div {
@@ -170,6 +174,29 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     margin: 10px;
     border-radius: 20px;
     padding: 10px;
+    color: #EDA800;
+    border: 1px solid #EDA800;
+    transition: background-color .5s;
+}
+
+.review-container:hover {
+    background-color: #383838;
+}
+
+.author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #EDA800;
+}
+
+.author-review {
+    display: flex;
+    line-height: 1px;
+}
+
+.author-review > span {
+    margin-left: 10px;
 }
 
 #reviews-title {
@@ -207,4 +234,26 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
 
 .review-spot-widget {
     background-color: red;
+}
+
+.edit-review-div > textarea {
+    color: white;
+    display: block;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    background-color: #383838;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+    width: 250px;
+}
+
+.rating-range  {
+    display: flex;
+}
+
+.rating-range > p {
+    margin-left: 10px;
 }

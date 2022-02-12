@@ -88,7 +88,7 @@ function UserPage() {
                     {spotList && (renderSpotList())}
                 </div>
                 <div id='booking-list'>
-                    <h2>Your bookings</h2>
+                    <h2 id='your-bookings'>Your bookings</h2>
                     {bookingList && (renderBookingList())}
                 </div>
                 <div id='review-list'>

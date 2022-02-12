@@ -14,6 +14,12 @@ function Review ({ review }) {
     const [keep, setKeep] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
 
+    const cancelEdit = () => {
+        setText(myReview.review);
+        setRating(myReview.rating);
+        setEdit(false);
+    }
+
     const handleEdit = () => {
         if (text.length >= 5) {
             setEdit(false);
@@ -39,8 +45,8 @@ function Review ({ review }) {
                 edit ?
                 <>
                     {error && <p>Enter at least 5 characters</p>}
-                    <textarea defaultValue={myReview.review} onChange={(e) => setText(e.target.value)}></textarea>
-                    <input type='number' defaultValue={myReview.rating} onChange={(e) => setRating(e.target.value)}></input>
+                    <textarea defaultValue={text} onChange={(e) => setText(e.target.value)}></textarea>
+                    <input type='number' defaultValue={rating} onChange={(e) => setRating(e.target.value)}></input>
                 </>
                 :
                 <>
@@ -53,7 +59,7 @@ function Review ({ review }) {
                     (edit ?
                     <>
                         <button onClick={handleEdit}>Done</button>
-                        <button onClick={() => setEdit(false)}>Cancel</button>
+                        <button onClick={cancelEdit}>Cancel</button>
                     </>
                     :
                     (

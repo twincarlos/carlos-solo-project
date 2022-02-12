@@ -8,7 +8,7 @@
     grid-template-rows: 0.2fr 1.5fr 1.3fr 1fr 1fr;
 }
 
-i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
+i {
     color: gold;
 }
 
@@ -162,6 +162,7 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
 
 #reviews-div {
     height: auto;
+    padding-bottom: 20px;
     border-bottom: 1px solid #EDA800;
 
 }
@@ -176,7 +177,7 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     padding: 10px;
     color: #EDA800;
     border: 1px solid #EDA800;
-    transition: background-color .5s;
+    transition: .5s background-color;
 }
 
 .review-container:hover {
@@ -232,6 +233,24 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     border-radius: 15px;
 }
 
+.edit-delete-review-button {
+    position: relative;
+    left: 270px;
+    bottom: 140px;
+}
+
+.edit-review-button, .delete-review-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 10px;
+    transition: .5s background-color color;
+}
+
+.edit-review-button:hover, .delete-review-button:hover {
+    background-color: #4D4D4D;
+}
+
 .review-spot-widget {
     background-color: red;
 }
@@ -243,7 +262,7 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     border: none;
     outline: none;
     margin-top: 10px;
-    background-color: #383838;
+    background-color: #666666;
     border-radius: 10px;
     padding-top: 5px;
     padding-left: 5px;
@@ -256,4 +275,49 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
 
 .rating-range > p {
     margin-left: 10px;
+}
+
+.edit-cancel-review {
+    position: relative;
+    left: 275px;
+    bottom: 155px;
+}
+
+.edit-cancel-review > button {
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 10px;
+    transition: .5s background-color;
+}
+
+.edit-cancel-review > button:hover {
+    background-color: #4D4D4D;
+}
+
+.delete-cancel-review {
+    position: relative;
+    left: 275px;
+    bottom: 140px;
+}
+
+.delete-cancel-review > button {
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 10px;
+    transition: .5s background-color;
+}
+
+.delete-cancel-review > button:hover {
+    background-color: #4D4D4D;
+}
+
+.error {
+    color: #FF4D7D;
+    padding-left: 5px;
+}
+
+.error > i {
+    color: #FF4D7D;
 }

@@ -18,6 +18,7 @@ function Review ({ review }) {
     const cancelEdit = () => {
         setText(myReview.review);
         setRating(myReview.rating);
+        setError(false);
         setEdit(false);
     }
 
@@ -52,7 +53,7 @@ function Review ({ review }) {
             {
                 edit ?
                 <div className='edit-review-div'>
-                    {error && <p>Enter at least 5 characters</p>}
+                    {error && <p className='error'><i className="fas fa-exclamation"></i> Enter at least 5 characters</p>}
                     <textarea defaultValue={text} onChange={(e) => setText(e.target.value)}></textarea>
                     <span className='rating-range'>
                         <input type='range' defaultValue={rating} min={1} max={5} onChange={(e) => setRating(e.target.value)}></input>
@@ -61,29 +62,29 @@ function Review ({ review }) {
                 </div>
                 :
                 <>
-                    <p>{text}</p>
-                    <p><i className="fas fa-star"></i> {rating}</p>
+                    <p><i className="fas fa-pencil-alt"></i> {text}</p>
+                    <p><i className="far fa-star"></i> {rating}</p>
                 </>
             }
             {
                 (sessionUser?.id === author.id) &&
                     (edit ?
-                    <>
-                        <button onClick={handleEdit}>Done</button>
-                        <button onClick={cancelEdit}>Cancel</button>
-                    </>
+                    <div className='edit-cancel-review'>
+                        <button onClick={handleEdit}><i className="fas fa-check"></i></button>
+                        <button onClick={cancelEdit}><i className="fas fa-times"></i></button>
+                    </div>
                     :
                     (
                         remove ?
-                        <>
-                            <button onClick={handleDelete}>Done</button>
-                            <button onClick={() => setRemove(false)}>Cancel</button>
-                        </>
+                        <div className='delete-cancel-review'>
+                            <button onClick={handleDelete}><i className="fas fa-check"></i></button>
+                            <button onClick={() => setRemove(false)}><i className="fas fa-times"></i></button>
+                        </div>
                         :
-                        <>
-                            <button onClick={() => setEdit(true)}>Edit</button>
-                            <button onClick={() => setRemove(true)}>Delete</button>
-                        </>
+                        <div className='edit-delete-review-button'>
+                            <button className='edit-review-button' onClick={() => setEdit(true)}><i className="fas fa-edit"></i></button>
+                            <button className='delete-review-button' onClick={() => setRemove(true)}><i className="far fa-trash-alt"></i></button>
+                        </div>
                     ))
             }
         </div>)

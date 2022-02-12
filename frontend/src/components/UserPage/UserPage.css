@@ -8,9 +8,12 @@
     width: 60%;
 }
 
-#spot-list {
-    width: fit-content;
+#user-body {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
 }
+
+/* ***************************************** */
 
 #user-header {
     display: flex;
@@ -34,7 +37,18 @@
     box-shadow: 0 0 50px rgba(207, 148, 0, 0.377);
 }
 
-#user-body {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 0.5fr;
+
+/* ***************************************** */
+
+#spot-list {
+    width: fit-content;
+    color: white;
+    text-align: center;
+    border: 1px solid gold;
+    padding-right: 40px;
+    border-radius: 20px;
+}
+
+#spot-list > h2 {
+    margin-left: 40px;
 }

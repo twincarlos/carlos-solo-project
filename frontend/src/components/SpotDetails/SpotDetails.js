@@ -60,7 +60,7 @@ function SpotDetails() {
             <div id='title-div'>
                 <h1>{newName ? newName : spot.name}</h1>
                 <span id='price-rating'>
-                    <p>${spot.price} /night</p>
+                    <p><i className="fas fa-dollar-sign"></i> {spot.price} /night</p>
                     <p><i className="fas fa-star"></i> {spot.rating}</p>
                     <p><i className="far fa-grin-stars"></i> {spot.numOfGuests}</p>
                 </span>

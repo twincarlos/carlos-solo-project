@@ -8,7 +8,7 @@
     grid-template-rows: 0.2fr 1.5fr 1.3fr 1fr 1fr;
 }
 
-i.fa-star, i.fa-grin-stars {
+i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
     color: gold;
 }
 
@@ -32,7 +32,8 @@ i.fa-star, i.fa-grin-stars {
 }
 
 #img-div > img {
-    box-shadow: 0 0 20px #FFFFA5;
+    box-shadow: 0 0 50px goldenrod;
+    border: 5px solid goldenrod;
     border-radius: 30px;
     width: 100%;
 }

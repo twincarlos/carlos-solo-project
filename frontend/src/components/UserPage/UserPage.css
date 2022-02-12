@@ -66,3 +66,15 @@
     text-align: center;
     color: white;
 }
+
+/* ***************************************** */
+
+#review-list {
+    border: 1px solid gold;
+    border-radius: 20px;
+    color: white;
+}
+
+#review-list > h2 {
+    text-align: center;
+}

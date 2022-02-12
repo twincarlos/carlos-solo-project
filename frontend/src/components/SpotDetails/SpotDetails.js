@@ -74,7 +74,7 @@ function SpotDetails() {
                         <p>Hosted by:</p>
                         <span id='host-details'>
                             <NavLink to={`/users/${host.id}`}>
-                                <img id='host-profile' src={host.image}/>
+                                <img id='host-profile' src={host.image} alt=''/>
                             </NavLink>
                             <span>
                                 <h2>{host.firstName}</h2>

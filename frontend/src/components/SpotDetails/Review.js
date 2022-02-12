@@ -44,10 +44,10 @@ function Review ({ review }) {
         keep &&
         (<div className='review-container'>
             <div className='author-review'>
-                <img className='author-image' src={author.image}></img>
+                <img className='author-image' src={author.image} alt=''></img>
                 <span>
                     <h3>{author.firstName} {author.lastName}</h3>
-                    <p>{`${((new Date(updated)).toString()).split(' ')[1]} ${((new Date(updated)).toString()).split(' ')[2]}`}</p>
+                    <p><i className="far fa-clock"></i> {`${((new Date(updated)).toString()).split(' ')[1]} ${((new Date(updated)).toString()).split(' ')[2]}`}</p>
                 </span>
             </div>
             {

@@ -47,7 +47,7 @@ i {
 }
 
 #edit-delete-spot {
-    margin-top: 60px;
+    margin-top: 80px;
 }
 
 #edit-spot-button {
@@ -57,6 +57,14 @@ i {
     height: 50px;
     border-radius: 20px;
     border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    transition: .5s font-size;
+}
+
+#edit-spot-button:hover, #delete-spot-button:hover {
+    font-size: 30px;
 }
 
 #delete-spot-button {
@@ -66,6 +74,10 @@ i {
     height: 50px;
     border-radius: 20px;
     border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    transition: .5s font-size;
 }
 
 #details-div > #booking-div {
@@ -74,10 +86,6 @@ i {
     width: 90%;
     height: 90%;
     margin: auto;
-}
-
-#details-div > #booking-div:hover {
-    background-color: #262626;
 }
 
 #price-rating {
@@ -176,7 +184,6 @@ i {
     border-radius: 20px;
     padding: 10px;
     color: #EDA800;
-    border: 1px solid #EDA800;
     transition: .5s background-color;
 }
 
@@ -193,7 +200,7 @@ i {
 
 .author-review {
     display: flex;
-    line-height: 1px;
+    line-height: 0;
 }
 
 .author-review > span {
@@ -375,4 +382,49 @@ i {
 
 #add-review-div > button:hover {
     background-color: #4D4D4D;
+}
+
+#edit-form-modal {
+    color: white;
+    text-align: center;
+}
+
+#edit-form-modal > form > label > input, #edit-form-modal > form > label > textarea {
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background-color: #88888888;
+    color: white;
+    margin-bottom: 15px;
+}
+
+#edit-form-modal > form > button {
+    display: block;
+    margin: auto;
+    width: 30%;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    /* margin-bottom: 50px; */
+}
+
+#edit-form-modal > ul {
+    color: #FF4D7D;
+    list-style: none;
+    padding-left: 0;
+}
+
+#edit-form-modal > form > span {
+    display: flex;
+    justify-content: center;
+    background-color: #88888888;
+    width: 60%;
+    height: 40px;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 15px;
 }

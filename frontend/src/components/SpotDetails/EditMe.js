@@ -20,8 +20,8 @@ function EditMe ({ spot }) {
                 </Modal>
             )}
             <div id='edit-delete-spot'>
-                <button id='edit-spot-button' onClick={() => setEditModal(true)}>Edit</button>
-                <button id='delete-spot-button' onClick={() => setDeleteModal(true)}>Delete</button>
+                <button id='edit-spot-button' onClick={() => setEditModal(true)}><i className="fas fa-i-cursor"></i> Edit Spot</button>
+                <button id='delete-spot-button' onClick={() => setDeleteModal(true)}><i className="far fa-trash-alt"></i> Delete Spot</button>
             </div>
         </>
     );

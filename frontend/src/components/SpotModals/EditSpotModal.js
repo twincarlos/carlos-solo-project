@@ -19,7 +19,6 @@ function EditSpotModal({ spot }) {
 
         if (name.length < 3) err.push('Name must be at least 3 characters long.');
         if (name.length > 50) err.push('Name must be no greater than 50 characters.');
-        if (numOfGuests < 1) err.push('You must allow at least 1 guest.');
         if (description < 10) err.push('Description must be at least 10 characters long.');
         if (image.length < 3) err.push('Please enter an image for your spot.');
 
@@ -46,7 +45,7 @@ function EditSpotModal({ spot }) {
 
     return(
         <div id='edit-form-modal'>
-            <h1>Edit me!</h1>
+            <h1>Edit your spot:</h1>
             { errors && <ul id='edit-spot-errors'>{errors.map((err, i) => <li key={i}>{err}</li>)}</ul> }
             <form id='edit-spot-form' onSubmit={handleSubmit}>
                 <label>
@@ -55,12 +54,18 @@ function EditSpotModal({ spot }) {
                 </label>
                 <label>
                     Update price per night:
-                    <input type='number' placeholder='$' onChange={(e) => setPrice(e.target.value)} value={price}></input>
                 </label>
+                <span>
+                    <input type='range' min={1000} max={6000} placeholder='$' onChange={(e) => setPrice(e.target.value)} value={price}></input>
+                    <p>{price}</p>
+                </span>
                 <label>
                     Number of guests allowed:
-                    <input type='number' placeholder='Number of guests' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
                 </label>
+                <span>
+                    <input type='range' placeholder='Number of guests' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
+                    <p>{numOfGuests}</p>
+                </span>
                 <label>
                     Update description:
                     <textarea placeholder='Tell us about your spot' onChange={(e) => setDescription(e.target.value)} defaultValue={description}></textarea>

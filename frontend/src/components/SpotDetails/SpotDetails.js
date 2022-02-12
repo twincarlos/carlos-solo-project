@@ -9,6 +9,7 @@ import EditMe from './EditMe';
 import Review from './Review';
 import AddReviewModal from './AddReviewModal';
 import { SpotContext } from '../../context/SpotContext';
+import Maps from '../Maps/Maps';
 
 import './SpotDetails.css';
 
@@ -83,6 +84,7 @@ function SpotDetails() {
             </div>
             <div id='map-div'>
                 <h1>Map</h1>
+                <Maps apiKey={'AIzaSyBcyvJYujCeWKA8XBlxtnPxZV6HvU4CEhc'} center={{ lat: parseInt(spot.lat, 10), lng: parseInt(spot.lng, 10) }}/>
             </div>
         </div>
     );

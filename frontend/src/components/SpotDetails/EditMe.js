@@ -19,8 +19,10 @@ function EditMe ({ spot }) {
                     <DeleteSpotModal spot={{ spot }}/>
                 </Modal>
             )}
-            <button onClick={() => setEditModal(true)}>Edit</button>
-            <button onClick={() => setDeleteModal(true)}>Delete</button>
+            <div id='edit-delete-spot'>
+                <button id='edit-spot-button' onClick={() => setEditModal(true)}>Edit</button>
+                <button id='delete-spot-button' onClick={() => setDeleteModal(true)}>Delete</button>
+            </div>
         </>
     );
 }

@@ -73,10 +73,6 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
     return (
         checkBookedSpot() ?
             (<>
-                <span id='price-rating'>
-                    <h2>{spot.price}</h2>
-                    <h2>{spot.rating}</h2>
-                </span>
                 {errors && (<ul>{errors.map((error, idx) => <li key={idx}>{error}</li>)}</ul>)}
                 <form onSubmit={handleSubmit}>
                     <span id='upper-form'>

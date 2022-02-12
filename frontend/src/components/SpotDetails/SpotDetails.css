@@ -8,39 +8,85 @@
     grid-template-rows: 0.2fr 1.5fr 1.3fr 1fr 1fr;
 }
 
-#title-div {
-    background-color: coral;
+i.fa-star, i.fa-grin-stars {
+    color: gold;
 }
 
-#img-div {
-    background-color: cornflowerblue;
+#host-profile {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid gold;
+}
+
+#host-details {
+    display: flex;
+}
+
+#host-details > span {
+    line-height: 10px;
+    margin: -5px 10px;
+    font-size: 25px;
+    color: gold;
 }
 
 #img-div > img {
+    box-shadow: 0 0 20px #FFFFA5;
+    border-radius: 30px;
     width: 100%;
 }
 
 #details-div {
-    /* background-color: crimson; */
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
-    height: 500px;
+    height: 300px;
 }
 
-#details-div > #details {
-    border: solid 1px greenyellow;
+#edit-delete-spot {
+    margin-top: 60px;
+}
+
+#edit-spot-button {
+    display: block;
+    margin: 20px auto;
+    width: 60%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+}
+
+#delete-spot-button {
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
 }
 
 #details-div > #booking-div {
-    border: solid 1px greenyellow;
+    transition: background-color .5s;
+    border-radius: 20px;
     width: 90%;
     height: 90%;
     margin: auto;
 }
 
-#details-div > #booking-div > #price-rating {
+#details-div > #booking-div:hover {
+    background-color: #262626;
+}
+
+#price-rating {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
+    position: relative;
+    bottom: 50px;
+}
+
+#price-rating > p {
+    margin: 0 30px;
+    font-size: 20px;
 }
 
 #upper-form {
@@ -88,10 +134,12 @@
 #booking-div > form {
     width: 90%;
     margin: auto;
+    color: white;
 }
 
 #book-button {
-    background-color: lime ;
+    transition: backround-color .5s;
+    background-color: gold;
     display: block;
     margin: auto;
     width: 100%;
@@ -100,23 +148,24 @@
     border-radius: 15px;
 }
 
+#book-button:hover {
+    background-color: goldenrod;
+}
+
 #your-total {
     text-align: center;
+    color: white;
 }
 
 #reviews-div {
-    background-color: darkcyan;
     height: auto;
 }
 
 #map-div {
-    background-color: gold;
     height: 500px;
 }
 
 .review-container {
-    background-color: white;
-    border: green 1px solid;
     margin: 10px;
     border-radius: 20px;
     padding: 10px;

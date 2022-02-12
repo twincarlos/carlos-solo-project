@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
@@ -59,13 +59,29 @@ function SpotDetails() {
         <div id='main-div'>
             <div id='title-div'>
                 <h1>{newName ? newName : spot.name}</h1>
+                <span id='price-rating'>
+                    <p>${spot.price} /night</p>
+                    <p><i className="fas fa-star"></i> {spot.rating}</p>
+                    <p><i className="far fa-grin-stars"></i> {spot.numOfGuests}</p>
+                </span>
             </div>
             <div id='img-div'>
                 <img src={newImage ? newImage : spot.image} alt=''></img>
             </div>
             <div id='details-div'>
                 <div id='details'>
-                    <h1>Hosted by: {host.firstName} {host.lastName}</h1>
+                    <span id='span-test'>
+                        <p>Hosted by:</p>
+                        <span id='host-details'>
+                            <NavLink to={`/users/${host.id}`}>
+                                <img id='host-profile' src={host.image}/>
+                            </NavLink>
+                            <span>
+                                <h2>{host.firstName}</h2>
+                                <h2>{host.lastName}</h2>
+                            </span>
+                        </span>
+                    </span>
                     <p>{newDescription ? newDescription : spot.description}</p>
                 </div>
                 {renderBookingForm()}

@@ -15,9 +15,9 @@ function NotAvailable ({spotNotAvail, render, setRender}) {
     }
 
     return (
-        <>
-            <h2>Spot not available on these dates.</h2>
-                <p>Change your dates:</p>
+        <div id='spot-not-available-div'>
+            <h2><i className="fas fa-ban"></i> Spot not available on these dates.</h2>
+                <p><i class="fas fa-history"></i> Change your dates:</p>
                     <form>
                         <span id='upper-form'>
                             <label id='check-in'>
@@ -29,20 +29,20 @@ function NotAvailable ({spotNotAvail, render, setRender}) {
                                 <input type='datetime-local' onChange={(e) => setCheckOut(e.target.value)} value={checkOut}></input>
                             </label>
                         </span>
-                        <input id='lower-form' type='number' placeholder='1 guest' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
+                        <input id='lower-form-not-available' type='number' placeholder='1 guest' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
                     </form>
             {
                 (sessionUser?.id === spotNotAvail.userId) &&
                     (
                         <div id='booking-div'>
-                            <p>Or cancel your booking:</p>
+                            <p><i className="far fa-calendar-times"></i> Or cancel your booking:</p>
                             <form onSubmit={handleCancel}>
                                 <button id='cancel-book-button'>Cancel Booking</button>
                             </form>
                         </div>
                     )
             }
-        </>
+        </div>
     );
 }
 

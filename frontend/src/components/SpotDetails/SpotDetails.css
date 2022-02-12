@@ -41,7 +41,7 @@ i {
 #details-div {
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
-    height: 300px;
+    height: fit-content;
     padding-bottom: 30px;
     border-bottom: 1px solid #EDA800;
 }
@@ -107,9 +107,20 @@ i {
 
 #lower-form {
     display: block;
-    margin: 23px auto;
+    margin: 23px 0;
     position: relative;
-    width: 98.2%;
+    width: 99%;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid gray;
+}
+
+#lower-form-not-available {
+    display: block;
+    margin: 23px 0;
+    position: relative;
+    width: 90.4%;
     height: 50px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -127,7 +138,7 @@ i {
 }
 
 #upper-form > #check-in > input {
-    width: 80%;
+    width: 81%;
     height: 50px;
     border-top-left-radius: 10px;
     border: 1px solid gray;
@@ -240,7 +251,7 @@ i {
 #cancel-book-button {
     background-color: red ;
     display: block;
-    margin: auto;
+    margin: auto 30px;
     width: 90%;
     height: 50px;
     border: none;
@@ -409,7 +420,6 @@ i {
     height: 40px;
     border-radius: 20px;
     border: none;
-    /* margin-bottom: 50px; */
 }
 
 #edit-form-modal > ul {
@@ -427,4 +437,28 @@ i {
     border-radius: 15px;
     margin: auto;
     margin-bottom: 15px;
+}
+
+#booking-errors {
+    color: #FF4D7D;
+    list-style: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+#booking-errors > li > i {
+    color: #FF4D7D;
+}
+
+#spot-not-available-div > h2, #spot-not-available-div > h2 > i {
+    color: #FF4D7D;
+}
+
+#spot-not-available-div > form {
+    color: white;
+    padding-left: 50px;
+}
+
+#spot-not-available-div {
+    text-align: center;
 }

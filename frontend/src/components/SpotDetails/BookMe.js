@@ -11,6 +11,7 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     let spotNotAvail;
+
     const trackBooking = (booking) => {
         const trackInterval = setInterval(() => {
             if (Date.now() >= (new Date(booking.checkOut)).getTime()) {
@@ -34,7 +35,7 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
             const desiredCheckInTime = (new Date(checkIn)).getTime();
             const desiredCheckOutTime = (new Date(checkOut)).getTime();
 
-            if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckOutTime)) || ((desiredCheckOutTime <= bookedCheckOutTime) && (desiredCheckOutTime >= bookedCheckInTime))) {
+            if (((desiredCheckInTime >= bookedCheckInTime) && (desiredCheckInTime <= bookedCheckOutTime)) || ((desiredCheckOutTime <= bookedCheckOutTime) && (desiredCheckOutTime >= bookedCheckInTime)) || ((desiredCheckInTime <= bookedCheckInTime) && (desiredCheckOutTime >= bookedCheckOutTime))) {
                 spotNotAvail = bookedSpot[i];
                 trackBooking(bookedSpot[i]);
                 return false;
@@ -52,7 +53,7 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
         const checkinTime = (new Date(checkIn)).getTime();
         const checkoutTime = (new Date(checkOut)).getTime();
 
-        if (checkinTime > checkoutTime || now > checkinTime) errArr.push('Enter a valid check-in and check-out time.');
+        if (checkinTime > checkoutTime || now > checkinTime) errArr.push('Enter a valid check-in and check-out times.');
         if (numOfGuests < 1) errArr.push('Enter at least 1 guest.');
         if (numOfGuests > spot.numOfGuests) errArr.push(`Only ${spot.numOfGuests} guests allowed.`);
 
@@ -73,7 +74,7 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
     return (
         checkBookedSpot() ?
             (<>
-                {errors && (<ul>{errors.map((error, idx) => <li key={idx}>{error}</li>)}</ul>)}
+                {errors && (<ul id='booking-errors'>{errors.map((error, idx) => <li key={idx}><i className="fas fa-exclamation"></i> {error}</li>)}</ul>)}
                 <form onSubmit={handleSubmit}>
                     <span id='upper-form'>
                         <label id='check-in'>

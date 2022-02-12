@@ -80,7 +80,7 @@ i.fa-star, i.fa-grin-stars, i.fa-dollar-sign {
 
 #price-rating {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     position: relative;
     bottom: 50px;
 }

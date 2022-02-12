@@ -20,7 +20,9 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background-color: rgba(24, 24, 24, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 50px rgba(207, 148, 0, 0.377);
 
   width: 500px;
   height: 400px;
@@ -69,15 +71,3 @@
   position: relative;
   right: 20px;
 }
-
-#success {
-  position: relative;
-  color: green;
-  background-color: greenyellow;
-  border: 1px solid green;
-  width: 20%;
-  margin: auto;
-  border-radius: 30px;
-  padding: 10px;
-}
-

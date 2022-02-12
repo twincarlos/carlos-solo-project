@@ -89,7 +89,7 @@ function SpotDetails() {
             <div id='reviews-div'>
                 <div id='reviews-title'>
                     <h1>Reviews</h1>
-                    {sessionUser && ((sessionUser?.id !== host.id) && (<button onClick={() => setShowModal(true)}>Add</button>))}
+                    {sessionUser && ((sessionUser?.id !== host.id) && (<button onClick={() => setShowModal(true)}><i className="fas fa-plus"></i></button>))}
                 </div>
                 { showModal && (
                     <Modal onClose={() => setShowModal(false)}>

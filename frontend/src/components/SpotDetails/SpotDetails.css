@@ -212,10 +212,17 @@ i {
 #reviews-title > button {
     height: 40px;
     width: 60px;
-    margin-top: 20px;
+    margin-top: 21px;
     margin-left: 20px;
     border-radius: 15px;
     border: none;
+    background-color: transparent;
+    font-size: 20px;
+    transition: .5s background-color;
+}
+
+#reviews-title > button:hover {
+    background-color: #4D4D4D;
 }
 
 #reviews-list {
@@ -320,4 +327,52 @@ i {
 
 .error > i {
     color: #FF4D7D;
+}
+
+#add-review-div {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 5px auto;
+    text-align: center;
+    padding-top: 70px;
+}
+
+#add-review-div > textarea {
+    border-radius: 10px;
+    color: white;
+    background-color: #4D4D4D;
+    border: none;
+    outline: none;
+}
+
+#add-review-div > span {
+    display: flex;
+    justify-content: center;
+}
+
+#error {
+    color: #FF4D7D;
+    text-align: center;
+    margin-top: -10px;
+}
+
+#error > i {
+    color: #FF4D7D;
+    padding-left: 5px;
+}
+
+#add-review-div > button {
+    width: 50%;
+    height: 40px;
+    margin: auto;
+    border-radius: 15px;
+    border: none;
+    transition: .5s background-color;
+    background-color: transparent;
+    color: white;
+}
+
+#add-review-div > button:hover {
+    background-color: #4D4D4D;
 }

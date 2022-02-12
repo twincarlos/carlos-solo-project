@@ -7,11 +7,9 @@ function AddReviewModal({ render, setRender, spotInfo, setShowModal }) {
     const sessionUser = useSelector(state => state.session.user);
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState(1);
-    const [errors, setErrors] = useState([]);
+    const [error, setError] = useState(false);
 
     const handleSubmit = () => {
-        const err = [];
-
         const newReview = {
             spotId: spotInfo.spot.id,
             userId: sessionUser.id,
@@ -19,28 +17,24 @@ function AddReviewModal({ render, setRender, spotInfo, setShowModal }) {
             rating
         }
 
-        if (reviewText.length < 5) err.push('Enter at least 5 characters.');
-
-
-        if (!err.length) {
+        if (reviewText.length < 5) {
+            setError(true);
+        } else {
             setShowModal(false);
             setRender(!render);
             return dispatch(createOneReview(newReview));
-        } else {
-            setErrors(err);
         }
-
     }
 
     return (
-        <div className="add-review-div">
-            <h1>Add me!</h1>
-            {errors &&
-                <ul>
-                    {errors.map((error, i) => <li key={i}>{error}</li>)}
-                </ul>}
+        <div id="add-review-div">
+            <h1>How was your experience?</h1>
+                {error && <p id='error'><i className="fas fa-exclamation"></i> Please enter at least 5 characters</p>}
             <textarea placeholder="Tell us about your stay" onChange={(e) => setReviewText(e.target.value)}></textarea>
-            <input type='number' onChange={(e) => setRating(e.target.value)} value={rating}></input>
+            <span>
+                <input type='range' min={1} max={5} onChange={(e) => setRating(e.target.value)} value={rating}></input>
+                <p>{rating}</p>
+            </span>
             <button onClick={handleSubmit}>Submit</button>
         </div>
     );

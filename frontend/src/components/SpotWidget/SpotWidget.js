@@ -10,8 +10,9 @@ function SpotWidget ({ spot }) {
             </NavLink>
             <span>
                 <h3>{spot.name}</h3>
-                <p>${spot.price} / night</p>
+                <p><i className="fas fa-dollar-sign"></i> {spot.price} / night</p>
             </span>
+            <p><i className="fas fa-map-marker-alt"></i> {`${spot.city}, ${spot.state}`}</p>
         </div>
     );
 }

@@ -56,6 +56,22 @@ label.booking-form:hover {
     background-color: tomato;
 }
 
+#booking-free-button {
+    position: relative;
+    margin: auto;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #8400FF;
+    transition: background-color .5s;
+}
+
+#booking-free-button:hover {
+    background-color: #FAA2FF;
+}
+
 .booking-form > ul {
     background-color: red;
     position: absolute;

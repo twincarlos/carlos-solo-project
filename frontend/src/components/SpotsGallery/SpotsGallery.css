@@ -23,3 +23,7 @@
     width: 2000px;
     height: 1800px;
 }
+
+#states-nav > li {
+    cursor: pointer;
+}

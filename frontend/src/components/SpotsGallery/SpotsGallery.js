@@ -1,4 +1,3 @@
-// import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useContext } from 'react';
 import { getAllSpots } from '../../store/spot';
@@ -25,7 +24,7 @@ function SpotsGallery() {
             <h1>Spots Gallery</h1>
             <StateList />
             <div className='spots-container'>
-                {spotListByLocation !== undefined ? (spotListByLocation?.length > 0 ? <h1>Location</h1> : <h2>Nothing found</h2>) : (spotList.map(spot => spot && (<SpotWidget key={`${spot.id}`} spot={spot}/>)))}
+                {spotListByLocation !== undefined ? (spotListByLocation?.length > 0 ? spotListByLocation.map((spot) => <SpotWidget key={`${spot.id}`} spot={spot}/>) : <h2>Nothing found</h2>) : (spotList.map(spot => spot && (<SpotWidget key={`${spot.id}`} spot={spot}/>)))}
             </div>
         </>
     );

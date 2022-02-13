@@ -21,7 +21,6 @@ function SpotsGallery() {
 
     return (
         <>
-            <h1>Spots Gallery</h1>
             <StateList />
             <div className='spots-container'>
                 {spotListByLocation !== undefined ? (spotListByLocation?.length > 0 ? spotListByLocation.map((spot) => <SpotWidget key={`${spot.id}`} spot={spot}/>) : <h2>Nothing found</h2>) : (spotList.map(spot => spot && (<SpotWidget key={`${spot.id}`} spot={spot}/>)))}

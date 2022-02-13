@@ -46,7 +46,7 @@ function UserPage() {
     renderSpotList = () => {
         return (
             <>
-                { (user.id === sessionUser?.id) &&  <button id='create-spot-button' onClick={() => setShowModal(true)}><i className="fas fa-hammer"></i> Create Spot</button>}
+                { ((user.id === sessionUser?.id) && (sessionUser?.isHost)) &&  <button id='create-spot-button' onClick={() => setShowModal(true)}><i className="fas fa-hammer"></i> Create Spot</button>}
                 <ul>
                     { spotList?.map((spot) => <SpotWidget key={`${spot.id}`} spot={spot}/>) }
                 </ul>

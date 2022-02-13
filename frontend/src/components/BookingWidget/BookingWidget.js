@@ -21,7 +21,7 @@ function BookingWidget ({ bookingInfo }) {
 
     return (
         <div className='booking-div'>
-            <h3>Your stay at:</h3>
+            <h3 className='your-stay-h3'>Your stay at:</h3>
             <h2>{spot.name}</h2>
             <NavLink to={`/spots/${spot.id}`} onClick={handleClick}>
                 <img className='booking-img' src={spot.image} alt=''></img>

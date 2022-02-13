@@ -43,6 +43,7 @@
 
 #spot-list {
     width: fit-content;
+    height: fit-content;
     color: white;
     text-align: center;
     border: 1px solid gold;
@@ -53,6 +54,21 @@
 
 #spot-list > h2 {
     margin-left: 40px;
+    border-bottom: 1px solid gold;
+}
+
+#create-spot-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin-left: 45px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: .5s font-size;
+}
+
+#create-spot-button:hover {
+    font-size: 20px;
 }
 
 /* ***************************************** */
@@ -64,6 +80,8 @@
 }
 
 #your-bookings {
+    margin-left: 50px;
+    border-bottom: 1px solid gold;
     text-align: center;
     color: white;
 }
@@ -72,6 +90,7 @@
 
 #review-list {
     border: 1px solid gold;
+    height: fit-content;
     border-radius: 20px;
     color: white;
     width: auto;
@@ -79,5 +98,8 @@
 }
 
 #review-list > h2 {
+    border-bottom: 1px solid gold;
     text-align: center;
+    width: 80%;
+    margin: 20px auto;
 }

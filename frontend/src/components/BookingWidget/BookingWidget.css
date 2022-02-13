@@ -1,21 +1,47 @@
 .booking-div {
-    background-color: aquamarine;
+    color: white;
+    background-color: #2a2a2a;
     border-radius: 20px;
     width: 600px;
     height: 200px;
     margin: auto;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    padding-top: 0;
+    line-height: 5px;
+    transition: .5s background-color;
+    border: 1px solid goldenrod;
+}
+
+.booking-div:hover {
+    background-color: #414141;
 }
 
 .booking-img {
     position: relative;
-    bottom: 98.3px;
+    bottom: 95px;
     left: 300px;
     width: 300px;
+    height: 200px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 
-.booking-h3 {
+.booking-div > h2 {
+    color: goldenrod;
     position: relative;
-    bottom: 220px;
+    top: 5px;
+    font-size: 40px;
+    z-index: 1;
+}
+
+.your-stay-h3 {
+    position: relative;
+    top: 10px;
+}
+
+.booking-h3 {
+    color: goldenrod;
+    position: relative;
+    bottom: 160px;
 }

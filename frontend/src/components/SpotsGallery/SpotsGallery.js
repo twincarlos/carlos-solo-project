@@ -1,32 +1,31 @@
-// import { useEffect, useContext } from 'react';
-import { useSelector } from 'react-redux';
-// import { getAllSpots } from '../../store/spot';
-// import { getAllSpotsByLocation } from '../../store/spot';
-// import { BookingContext } from '../../context/BookingContext';
+// import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useContext } from 'react';
+import { getAllSpots } from '../../store/spot';
+import { getAllSpotsByLocation } from '../../store/spot';
+import { BookingContext } from '../../context/BookingContext';
 import SpotWidget from '../SpotWidget/SpotWidget';
+import StateList from './StateList';
 
 import './SpotsGallery.css';
 
 function SpotsGallery() {
-    // const { location, setLocation, checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors } = useContext(BookingContext);
-    // const dispatch = useDispatch();
+    const { location } = useContext(BookingContext);
+    const dispatch = useDispatch();
     const spotList = useSelector((state) => Object.values(state.spot));
+    const spotListByLocation = useSelector((state) => state.spot?.spotList);
 
-    // useEffect(() => {
-    //     if (!location.length) dispatch(getAllSpots());
-    //     else dispatch(getAllSpotsByLocation(location));
-    // }, [dispatch]);
+    useEffect(() => {
+        if (location.length) dispatch(getAllSpotsByLocation(location))
+        else dispatch(getAllSpots());
+    }, [dispatch, location]);
 
     return (
         <>
             <h1>Spots Gallery</h1>
-            <ul id='states-nav'>
-                <li>All</li>
-                {spotList && spotList?.map((spot, idx) => (idx < 10) && (spot && (<li key={`${spot.id}`}>{spot.state}</li>)))}
-                <li>Filters</li>
-            </ul>
+            <StateList />
             <div className='spots-container'>
-                {spotList.map(spot => spot && (<SpotWidget key={`${spot.id}`} spot={spot}/>))}
+                {spotListByLocation !== undefined ? (spotListByLocation?.length > 0 ? <h1>Location</h1> : <h2>Nothing found</h2>) : (spotList.map(spot => spot && (<SpotWidget key={`${spot.id}`} spot={spot}/>)))}
             </div>
         </>
     );

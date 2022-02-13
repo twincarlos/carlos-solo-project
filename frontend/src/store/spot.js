@@ -148,8 +148,10 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case ALL_SPOTS_BY_LOCATION: {
-            const newState = {};
-            action.spotList.forEach((spot) => (newState[spot.id] = spot));
+            // const newState = {...state};
+            // action.spotList.forEach((spot) => (newState[spot.id] = spot));
+            // return newState;
+            const newState = { ...state, spotList: action.spotList};
             return newState;
         }
         case ALL_SPOTS_BY_USERID: {

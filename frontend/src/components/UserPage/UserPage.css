@@ -5,7 +5,7 @@
     top: 70px;
     display: grid;
     grid-template-rows: 0.2fr 0.8fr;
-    width: 60%;
+    width: auto;
 }
 
 #user-body {
@@ -48,6 +48,7 @@
     border: 1px solid gold;
     padding-right: 40px;
     border-radius: 20px;
+    margin-right: 50px;
 }
 
 #spot-list > h2 {
@@ -73,6 +74,8 @@
     border: 1px solid gold;
     border-radius: 20px;
     color: white;
+    width: auto;
+    margin-left: 50px;
 }
 
 #review-list > h2 {

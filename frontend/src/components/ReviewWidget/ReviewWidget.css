@@ -1,0 +1,26 @@
+.review-main {
+    background-color: #2a2a2a;
+    border-radius: 20px;
+    padding: 5px;
+    width: auto;
+    margin: auto;
+    position: relative;
+    right: 19px;
+    margin-bottom: 10px;
+    line-height: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid goldenrod;
+    transition: .5s background-color;
+}
+
+.review-main:hover {
+    background-color: #414141;
+}
+
+.review-p {
+    font-size: 15px;
+}
+
+.date-p {
+    font-size: 14px;
+}

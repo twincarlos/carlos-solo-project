@@ -22,7 +22,8 @@ function LoginForm() {
   };
 
   return (
-    <form id='loginForm' onSubmit={handleSubmit}>
+    <form id='login-form' onSubmit={handleSubmit}>
+      <h2>Log in</h2>
       <ul id='errors'>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -47,7 +48,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
-      <label id='signUpTag'>
+      <label id='sign-up-tag'>
         Don't have an account?
           <a href="/signup"> Sign up!</a>
       </label>

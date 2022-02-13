@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addOneSpot } from '../../store/spot';
 
+import './CreateSpotModal.css';
+
 function CreateSpotModal({ render, setRender, setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -43,7 +45,6 @@ function CreateSpotModal({ render, setRender, setShowModal }) {
                 description,
                 image
             }
-            // setSuccess(true);
             setRender(!render);
             setShowModal(false);
             return dispatch(addOneSpot(newSpot));
@@ -52,9 +53,8 @@ function CreateSpotModal({ render, setRender, setShowModal }) {
 
     return (
         <div id='create-spot-modal'>
-            <h1>Add your spot!</h1>
+            <h1><i className="fas fa-hammer"></i> Add your spot!</h1>
             { errors && <ul id='create-spot-errors'>{errors.map((err, i) => <li key={i}>{err}</li>)}</ul> }
-            {/* { success && <h2 id='success'>Success!</h2>} */}
             <form id='create-spot-form' onSubmit={handleSubmit}>
                 <label>
                     Name:
@@ -73,12 +73,18 @@ function CreateSpotModal({ render, setRender, setShowModal }) {
                     <input type='text' placeholder='State' onChange={(e) => setState(e.target.value)} value={state}></input>
                 </label>
                 <label>
-                    Price per night:
-                    <input type='number' placeholder='$' onChange={(e) => setPrice(e.target.value)} value={price}></input>
+                    <p>Price per night:</p>
+                    <span>
+                        <input type='range' min={1000} max={9999} classsName='range-input' placeholder='$' onChange={(e) => setPrice(e.target.value)} value={price}></input>
+                        <input type='number' className='number-input' onChange={(e) => setPrice(e.target.value)} value={price}></input>
+                    </span>
                 </label>
                 <label>
-                    Number of guests allowed:
-                    <input type='number' placeholder='Number of guests' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
+                    <p>Number of guests allowed:</p>
+                    <span>
+                        <input type='range' min={1} max={30} classsName='range-input' placeholder='Number of guests' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
+                        <input type='number' className='number-input' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
+                    </span>
                 </label>
                 <label>
                     Add a description:

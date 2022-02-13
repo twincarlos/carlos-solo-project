@@ -1,33 +1,46 @@
-#loginForm {
+#login-form {
+    position: relative;
+    bottom: 10px;
     padding: 30px;
     display: flex;
     flex-direction: column;
 }
 
-#loginForm input, label {
+#login-form > h2 {
+    position: relative;
+    top: 10px;
+    margin: auto;
+    font-size: 30px;
+    color: goldenrod;
+    border-bottom: 1px solid goldenrod;
+}
+
+#login-form input, label {
     display: block;
     text-align: center;
 }
 
-#loginForm input {
+#login-form input {
     margin-bottom: 20px;
     margin: 10px auto;
+    border-radius: 10px;
+    border: none;
+    outline: none;
 
     width: 50%;
     height: 30px;
 }
 
-#loginForm button {
+#login-form button {
     margin: 10px auto;
     width: 50%;
-    height: 30px;
+    height: 40px;
+    background-color: goldenrod;
+    border: none;
+    border-radius: 20px;
 }
 
-#signUpTag {
-    margin-top: 20px;
-}
-
-#loginForm ul {
+#login-form ul {
     width: 50%;
     margin: 10px auto;
     text-align: center;
@@ -46,4 +59,13 @@
     border: none;
     color: white;
     font-size: 17px;
+}
+
+#sign-up-tag {
+    margin-top: 20px;
+}
+
+#sign-up-tag > a {
+    text-decoration: none;
+    color: goldenrod;
 }

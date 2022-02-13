@@ -1,4 +1,39 @@
-#create-spot-form {
-    position: relative;
-    background-color: red;
+#create-spot-modal {
+    background-color: #1C1C1C;
+    height: fit-content;
+    padding-bottom: 50px;
+}
+
+#create-spot-modal > form > button {
+    width: 30%;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    background-color: goldenrod;
+}
+
+#create-spot-modal > form > label > span {
+    display: flex;
+    justify-content: center;
+}
+
+#create-spot-modal > form > label > p {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.number-input {
+    width: 10%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 50px;
+    border-radius: 10px;
+    transition: .5s background-color;
+}
+
+.number-input:hover {
+    background-color: rgb(92, 92, 92);
 }

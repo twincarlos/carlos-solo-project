@@ -1,10 +1,13 @@
 import { useState, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { BookingContext } from '../../context/BookingContext';
+import { getAllSpotsByLocation } from '../../store/spot';
 
 import './BookingSearchBar.css';
 
 function BookingSearchBar () {
+    const dispatch = useDispatch();
     const [activeClass, setActiveClass] = useState('');
     const { location, setLocation, checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors } = useContext(BookingContext);
     let history = useHistory();
@@ -25,6 +28,7 @@ function BookingSearchBar () {
         setErrors(errArr);
 
         if (errArr.length === 0) {
+            dispatch(getAllSpotsByLocation(location));
             history.push('/spots');
         }
     }

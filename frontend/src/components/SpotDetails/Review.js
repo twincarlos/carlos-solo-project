@@ -65,7 +65,7 @@ function Review ({ review }) {
                 </div>
                 :
                 <>
-                    <p><i class="fas fa-quote-left"></i> {text}</p>
+                    <p><i className="fas fa-quote-left"></i> {text}</p>
                     <p><i className="far fa-star"></i> {rating}</p>
                 </>
             }

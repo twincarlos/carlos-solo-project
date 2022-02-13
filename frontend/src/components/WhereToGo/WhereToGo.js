@@ -1,11 +1,15 @@
 import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getAllSpots } from '../../store/spot';
 import { BookingContext } from '../../context/BookingContext';
 
 import './WhereToGo.css';
 
 function WhereToGo() {
+    const history = useHistory();
     const { setCheckIn, setCheckOut, setNumOfGuests, setErrors } = useContext(BookingContext);
+    const dispatch = useDispatch();
 
     const reset = () => {
         const now = new Date(Date.now());
@@ -18,10 +22,15 @@ function WhereToGo() {
         setErrors([]);
     }
 
+    const handleSubmit = () => {
+        reset();
+        dispatch(getAllSpots());
+        history.push('/spots');
+    }
+
     return (
         <div id='where-to-go'>
-            {/* <a href='/spots'>I'm rich</a> */}
-            <NavLink id='im-rich-button' to='/spots' onClick={reset}>I'm rich</NavLink>
+            <NavLink id='im-rich-button' to='/spots' onClick={handleSubmit}>I'm rich</NavLink>
             <h1>Not sure where to go?</h1>
             <img src='https://www.sbidawards.com/wp-content/uploads/2020/08/0c2107c787a7815480dd1c833d285ef2a7c89183.jpg' alt=''/>
         </div>

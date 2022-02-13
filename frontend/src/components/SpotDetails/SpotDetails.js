@@ -2,6 +2,7 @@ import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneSpot } from '../../store/spot';
+import { getAllBookingsFromUserId } from '../../store/booking';
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import BookMe from './BookMe';
@@ -17,15 +18,21 @@ function SpotDetails() {
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const spotInfo = useSelector(state => state.spot.spotInfo);
+    const bookingList = useSelector(state => state.booking.bookingList);
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
+    // const [isBooked, setIsBooked] = useState(false);
     const { newName, newDescription, newImage } = useContext(SpotContext);
     const [render, setRender] = useState(false);
 ;
     let renderReviewsList = () => null;
     let renderBookingForm = () => null;
+
     useEffect(() => {
         dispatch(getOneSpot(spotId));
+        if (sessionUser) {
+            dispatch(getAllBookingsFromUserId(sessionUser.id));
+        }
         renderReviewsList();
     }, [dispatch, spotId, render]);
 
@@ -89,7 +96,7 @@ function SpotDetails() {
             <div id='reviews-div'>
                 <div id='reviews-title'>
                     <h1>Reviews</h1>
-                    {sessionUser && ((sessionUser?.id !== host.id) && (<button onClick={() => setShowModal(true)}><i className="fas fa-plus"></i></button>))}
+                    { ((bookingList.filter((booking) => booking.booking.spotId === Number(spotId))).length) && (<button onClick={() => setShowModal(true)}><i className="fas fa-plus"></i></button>) }
                 </div>
                 { showModal && (
                     <Modal onClose={() => setShowModal(false)}>

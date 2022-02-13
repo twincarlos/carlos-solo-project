@@ -23,6 +23,7 @@ function BookingWidget ({ bookingInfo }) {
         <div className='booking-div'>
             <h3 className='your-stay-h3'>Your stay at:</h3>
             <h2>{spot.name}</h2>
+            {booking.booked ? <p className='complete'><i className="fas fa-calendar-check"></i> Complete!</p> : <p><i className="fas fa-spinner"></i> Current...</p>}
             <NavLink to={`/spots/${spot.id}`} onClick={handleClick}>
                 <img className='booking-img' src={spot.image} alt=''></img>
             </NavLink>

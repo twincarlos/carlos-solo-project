@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Modal } from '../../context/Modal';
 import CreateSpotModal from '../SpotModals/CreateSpotModal';
 import { getOneUser } from '../../store/user';
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SpotWidget from '../SpotWidget/SpotWidget';
 import BookingWidget from '../BookingWidget/BookingWidget';
 import ReviewWidget from '../ReviewWidget/ReviewWidget';
+import { BookingContext } from '../../context/BookingContext';
 
 import './UserPage.css'
 
@@ -22,7 +23,7 @@ function UserPage() {
     const reviewList = useSelector(state => state.review.reviewList);
     const user = useSelector(state => state.user.user);
     const [showModal, setShowModal] = useState(false);
-    const [render, setRender] = useState(false);
+    const {render, setRender} = useContext(BookingContext)
 
     let renderSpotList =  null;
     let renderBookingList = null;

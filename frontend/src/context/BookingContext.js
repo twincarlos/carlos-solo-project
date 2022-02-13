@@ -19,9 +19,10 @@ export const BookingProvider = props => {
     const [numOfGuests, setNumOfGuests] = useState(1);
     const [errors, setErrors] = useState([]);
     const [location, setLocation] = useState('');
+    const [render, setRender] = useState(false);
 
     return (
-        <BookingContext.Provider value={{ location, setLocation, checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors }}>
+        <BookingContext.Provider value={{ location, setLocation, checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors, render, setRender }}>
             {props.children}
         </BookingContext.Provider>
     );

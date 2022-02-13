@@ -16,7 +16,7 @@ function NotAvailable ({spotNotAvail, render, setRender}) {
 
     return (
         <div id='spot-not-available-div'>
-            { (sessionUser?.id === spotNotAvail.userId) ? <h2 id='you-have-booked'><i class="fas fa-check"></i> You have booked this place!</h2> : <h2 id='not-avail'><i className="fas fa-ban"></i> Spot not available on these dates.</h2> }
+            { (sessionUser?.id === spotNotAvail.userId) ? <h2 id='you-have-booked'><i className="fas fa-check"></i> You have booked this place!</h2> : <h2 id='not-avail'><i className="fas fa-ban"></i> Spot not available on these dates.</h2> }
                 <p><i className="fas fa-history"></i> Find another date:</p>
                     <form>
                         <span id='upper-form'>

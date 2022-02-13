@@ -19,7 +19,7 @@
 
 .booking-img {
     position: relative;
-    bottom: 95px;
+    bottom: 127px;
     left: 300px;
     width: 300px;
     height: 200px;
@@ -43,5 +43,9 @@
 .booking-h3 {
     color: goldenrod;
     position: relative;
-    bottom: 160px;
+    bottom: 190px;
+}
+
+.complete, .complete > i {
+    color: rgb(94, 255, 0);
 }

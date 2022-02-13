@@ -1,4 +1,5 @@
-const { Spot, User, Review, Booking } = require('./models');
+const { Op } = require('sequelize');
+const { Spot, User, Review, Booking, Sequelize } = require('./models');
 
 function positiveOrNegative() {
     const min = 0;
@@ -21,6 +22,17 @@ async function allSpots() {
 
 async function allSpotsByUserId(userId) {
     return await Spot.findAll({ where: { userId } });
+}
+
+async function allSpotsByLocation(location) {
+    const spotList = await Spot.findAll({
+        where: {
+            [Op.or]: [ { name: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location }, { [Op.like]: `%${location}` }] } }, { city: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location }, { [Op.like]: `%${location}` }] } }, { state: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location }, { [Op.like]: `%${location}` }] } } ]
+        }
+    })
+
+    console.log(spotList);
+    return spotList;
 }
 
 async function getSpotByPk(id) {
@@ -85,4 +97,4 @@ async function deleteSpot(spotId) {
     return await spot.destroy();
 }
 
-module.exports = { allSpots, allSpotsByUserId, getSpotByPk, addSpot, updateSpot, deleteSpot };
+module.exports = { allSpots, allSpotsByLocation, allSpotsByUserId, getSpotByPk, addSpot, updateSpot, deleteSpot };

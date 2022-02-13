@@ -23,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/twincarlos/carlos-solo-project/issues"
   },
-  "homepage": "https://github.com/twincarlos/carlos-solo-project#readme"
+  "homepage": "https://github.com/twincarlos/carlos-solo-project#readme",
+  "dependencies": {
+    "pg": "^8.7.3",
+    "sequelize": "^5.22.5",
+    "sequelize-cli": "^5.5.1"
+  }
 }

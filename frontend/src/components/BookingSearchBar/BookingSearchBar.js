@@ -6,8 +6,7 @@ import './BookingSearchBar.css';
 
 function BookingSearchBar () {
     const [activeClass, setActiveClass] = useState('');
-    const [location, setLocation] = useState('');
-    const { checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors } = useContext(BookingContext);
+    const { location, setLocation, checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors } = useContext(BookingContext);
     let history = useHistory();
 
     const handleSubmit = (e) => {

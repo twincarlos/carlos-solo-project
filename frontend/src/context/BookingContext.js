@@ -18,9 +18,10 @@ export const BookingProvider = props => {
     const [checkOut, setCheckOut] = useState(`${afterTomorrow.getFullYear()}-${((afterTomorrow.getMonth() + 1).toString()).length > 1 ? (afterTomorrow.getMonth() + 1) : `0${(afterTomorrow.getMonth() + 1)}`}-${((afterTomorrow.getDate()).toString()).length > 1 ? (afterTomorrow.getDate()) : `0${(afterTomorrow.getDate())}`}T${((afterTomorrow.getHours()).toString()).length > 1 ? (afterTomorrow.getHours()) : `0${(afterTomorrow.getHours())}`}:${((afterTomorrow.getMinutes()).toString()).length > 1 ? (afterTomorrow.getMinutes()) : `0${(afterTomorrow.getMinutes())}`}`);
     const [numOfGuests, setNumOfGuests] = useState(1);
     const [errors, setErrors] = useState([]);
+    const [location, setLocation] = useState('');
 
     return (
-        <BookingContext.Provider value={{ checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors }}>
+        <BookingContext.Provider value={{ location, setLocation, checkIn, setCheckIn, checkOut, setCheckOut, numOfGuests, setNumOfGuests, errors, setErrors }}>
             {props.children}
         </BookingContext.Provider>
     );

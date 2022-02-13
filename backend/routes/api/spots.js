@@ -13,6 +13,11 @@ router.get('/:id', async (req, res) => {
     return res.json(spotInfo);
 });
 
+router.get('/search/:location', async (req, res) => {
+    const spotList = await SpotRepository.allSpotsByLocation(req.params.location);
+    return res.json(spotList);
+});
+
 router.get('/all/:userId', async (req, res) => {
     const spotList = await SpotRepository.allSpotsByUserId(req.params.userId);
     return res.json(spotList);

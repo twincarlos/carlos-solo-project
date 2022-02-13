@@ -1,0 +1,22 @@
+#div-not-found {
+    background-color: rgba(59, 59, 59, 0.486);
+    backdrop-filter: blur(10px);
+    width: 70%;
+    height: fit-content;
+    margin: 200px auto;
+    border-radius: 30px;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+#text-not-found {
+    display: flex;
+    justify-content: center;
+}
+
+.fa-concierge-bell {
+    font-size: 400px;
+    color: goldenrod;
+    width: fit-content;
+    margin-left: 38.5%;
+}

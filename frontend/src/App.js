@@ -10,6 +10,7 @@ import SpotsGallery from "./components/SpotsGallery/SpotsGallery";
 import SpotDetails from "./components/SpotDetails/SpotDetails";
 import BecomeHost from "./components/BecomeHost/BecomeHost";
 import UserPage from "./components/UserPage/UserPage";
+import NotFound from "./components/NotFound/NotFound";
 import { SpotProvider } from "./context/SpotContext";
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/users/:userId">
             <UserPage />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
       )}

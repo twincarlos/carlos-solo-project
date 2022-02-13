@@ -26,4 +26,14 @@
 
 #states-nav > li {
     cursor: pointer;
+    transition: .3s font-size;
+}
+
+#states-nav > li:hover {
+    font-size: 25px;
+}
+
+.active-li {
+    font-size: 25px;
+    color: white;
 }

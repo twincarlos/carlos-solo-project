@@ -455,8 +455,12 @@ i {
     color: #FF4D7D;
 }
 
-#spot-not-available-div > h2, #spot-not-available-div > h2 > i {
+#you-have-booked, #you-have-booked > i {
     color: rgb(71, 255, 47);
+}
+
+#not-avail, #not-avail > i {
+    color: #FF4D7D;
 }
 
 #spot-not-available-div > form {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { updateOneReview, deleteOneReview } from '../../store/review';
 
 function Review ({ review }) {
@@ -44,7 +45,9 @@ function Review ({ review }) {
         keep &&
         (<div className='review-container'>
             <div className='author-review'>
-                <img className='author-image' src={author.image} alt=''></img>
+                <NavLink to={`/users/${author.id}`}>
+                    <img className='author-image' src={author.image} alt=''></img>
+                </NavLink>
                 <span>
                     <h3>{author.firstName} {author.lastName}</h3>
                     <p><i className="far fa-clock"></i> {`${((new Date(updated)).toString()).split(' ')[1]} ${((new Date(updated)).toString()).split(' ')[2]}`}</p>

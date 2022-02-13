@@ -27,11 +27,10 @@ async function allSpotsByUserId(userId) {
 async function allSpotsByLocation(location) {
     const spotList = await Spot.findAll({
         where: {
-            [Op.or]: [ { name: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location }, { [Op.like]: `%${location}` }] } }, { city: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location }, { [Op.like]: `%${location}` }] } }, { state: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location }, { [Op.like]: `%${location}` }] } } ]
+            [Op.or]: [ { name: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location[0].toLowerCase() + location.slice(1) }, { [Op.startsWith]: location[0].toUpperCase() + location.slice(1) }, { [Op.iLike]: `%${location}` }] } }, { city: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location[0].toLowerCase() + location.slice(1) }, { [Op.startsWith]: location[0].toUpperCase() + location.slice(1) }, { [Op.iLike]: `%${location}` }] } }, { state: { [Op.or]: [{ [Op.substring]: location }, { [Op.startsWith]: location[0].toLowerCase() + location.slice(1) }, { [Op.startsWith]: location[0].toUpperCase() + location.slice(1) }, { [Op.iLike]: `%${location}` }] } } ]
         }
     })
 
-    console.log(spotList);
     return spotList;
 }
 

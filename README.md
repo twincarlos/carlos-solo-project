@@ -19,17 +19,9 @@
 
 [Airbnb Deluxe](https://airbnb-deluxe.herokuapp.com/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 ### Built With
 
 * [React.js](https://reactjs.org/)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -59,8 +51,6 @@
    npx dotenv sequelize db:seed:all
 8. Run npm start in your backend directory, as well as in your frontend directory.
 9. You can login as a Demo user or sign up for an account to enjoy all the functionalities of **Airbnb Deluxe**
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact

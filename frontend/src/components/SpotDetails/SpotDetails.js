@@ -21,7 +21,6 @@ function SpotDetails() {
     const bookingList = useSelector(state => state.booking.bookingList);
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-    // const [isBooked, setIsBooked] = useState(false);
     const { newName, newDescription, newImage } = useContext(SpotContext);
     const [render, setRender] = useState(false);
 ;
@@ -34,7 +33,7 @@ function SpotDetails() {
             dispatch(getAllBookingsFromUserId(sessionUser.id));
         }
         renderReviewsList();
-    }, [dispatch, spotId, render]);
+    }, [dispatch, spotId, render, sessionUser]);
 
 
     if (!spotInfo) {

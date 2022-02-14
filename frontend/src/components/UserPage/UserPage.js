@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Modal } from '../../context/Modal';
 import CreateSpotModal from '../SpotModals/CreateSpotModal';
 import { getOneUser } from '../../store/user';

@@ -1,0 +1,27 @@
+#profile-links-div {
+    color: white;
+    position: absolute;
+    width: 5%;
+    height: auto;
+    border-radius: 15px;
+    top: 460px;
+    text-align: center;
+    line-height: 0px;
+    padding-bottom: 20px;
+    opacity: 0.3;
+    background-color: rgba(0, 0, 0, 0.472);
+    border: 1px solid goldenrod;
+    transition: .5s width;
+    z-index: 3;
+}
+
+#profile-links-div > img {
+    width: 80%;
+    margin-top: 28px;
+    border-radius: 15px;
+}
+
+#profile-links-div:hover {
+    opacity: 1;
+    width: 10%;
+}

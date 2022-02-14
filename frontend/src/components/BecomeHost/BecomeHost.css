@@ -12,7 +12,6 @@
 #host-left {
     text-align: center;
     line-height: 40px;
-    background-color: black;
     color: white;
 }
 
@@ -69,7 +68,10 @@
 }
 
 #video-right {
-    background-color: gold;
+    background-image: url(../../../public/airbnb-deluxe-assets/host-img.jpeg);
+    background-size: cover;
+    background-position: 30%;
+    filter: brightness(60%);
 }
 
 #errors-host {

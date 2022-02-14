@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import BookingSearchBar from '../BookingSearchBar/BookingSearchBar';
+import ProfileLinks from '../ProfileLinks';
 import * as sessionActions from "../../store/session";
 import './Navigation.css';
 
@@ -34,13 +35,16 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul id='nav'>
-      <li>
-        <NavLink id='home' exact to="/">Home</NavLink>
-        <BookingSearchBar />
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <>
+      <ul id='nav'>
+        <li>
+          <NavLink id='home' exact to="/">Home</NavLink>
+          <BookingSearchBar />
+          {isLoaded && sessionLinks}
+        </li>
+      </ul>
+      <ProfileLinks />
+    </>
   );
 }
 

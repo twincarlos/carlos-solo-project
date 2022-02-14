@@ -32,9 +32,8 @@ function ProfileButton({ user }) {
   return (
     <>
       <button id='profile-button' onClick={openMenu}>
-        {/* <i className="fas fa-user-circle" /> */}
         <p><i className="fas fa-bars"></i> {user.firstName} {user.lastName}</p>
-        <img src={user.image}></img>
+        <img src={user.image} alt=''></img>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

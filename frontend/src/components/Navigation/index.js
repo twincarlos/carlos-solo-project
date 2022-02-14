@@ -23,7 +23,7 @@ function Navigation({ isLoaded }){
   }
 
   useEffect(() => {
-    dispatch(getOneUser(sessionUser?.id));
+    if (sessionUser) dispatch(getOneUser(sessionUser?.id));
   }, [dispatch, render]);
 
   let sessionLinks;

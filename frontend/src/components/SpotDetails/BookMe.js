@@ -49,6 +49,10 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
 
         const errArr = [];
 
+        if (!sessionUser) {
+            return setErrors(['Log in to book this spot.']);
+        }
+
         const now = Date.now();
         const checkinTime = (new Date(checkIn)).getTime();
         const checkoutTime = (new Date(checkOut)).getTime();
@@ -87,9 +91,9 @@ function BookMe ({ spot, bookedSpot, render, setRender }) {
                         </label>
                     </span>
                     <input id='lower-form' type='number' placeholder='1 guest' onChange={(e) => setNumOfGuests(e.target.value)} value={numOfGuests}></input>
-                    <button id='book-button' disabled={!sessionUser}>Book</button>
+                    <button id='book-button'>Book</button>
                 </form>
-                <h3 id='your-total'>Your total is: ${(((new Date(checkOut)).getTime()) - ((new Date(checkIn)).getTime())) * (spot.price / 86400000)}</h3>
+                <h3 id='your-total'>Your total is: ${((((new Date(checkOut)).getTime()) - ((new Date(checkIn)).getTime())) * (spot.price / 86400000)).toFixed(2)}</h3>
             </>)
             :
             <NotAvailable spotNotAvail={spotNotAvail} render={render} setRender={setRender}/>

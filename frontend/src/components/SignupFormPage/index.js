@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { BookingContext } from "../../context/BookingContext";
 import * as sessionActions from "../../store/session";
 
 import './SignupForm.css';
@@ -14,6 +15,7 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const { render, setRender } = useContext(BookingContext);
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -21,11 +23,12 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, firstName, lastName, password }))
+      dispatch(sessionActions.signup({ email, firstName, lastName, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
+      return setRender(!render);
     }
     return setErrors(['Passwords do not match']);
   };

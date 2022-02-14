@@ -15,6 +15,7 @@ div#where-to-go {
     bottom: 130px;
     border-radius: 10px;
     box-shadow: 0 0 50px #edaa0086;
+    filter: brightness(80%);
 }
 
 #where-to-go > h1 {

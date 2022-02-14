@@ -72,6 +72,7 @@
     background-size: cover;
     background-position: 30%;
     filter: brightness(60%);
+    z-index: -1;
 }
 
 #errors-host {

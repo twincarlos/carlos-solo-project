@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import { BookingContext } from '../../context/BookingContext';
 
 import './BecomeHost.css';
 
@@ -10,6 +12,8 @@ function Apply ({ apply, setApply }) {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
     const userId = useSelector(state => state.session.user.id);
+    const history = useHistory();
+    const { render, setRender } = useContext(BookingContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +29,8 @@ function Apply ({ apply, setApply }) {
                         }
                     }
                 );
+            setRender(!render);
+            return history.push(`/users/${userId}`);
         } else {
             setErrors(['Passwords do not match.'])
         }

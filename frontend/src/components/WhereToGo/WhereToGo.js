@@ -3,6 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getAllSpots } from '../../store/spot';
 import { BookingContext } from '../../context/BookingContext';
+import logo from '../../airbnb-deluxe-assets/logo.png'
 
 import './WhereToGo.css';
 
@@ -32,7 +33,8 @@ function WhereToGo() {
         <div id='where-to-go'>
             <NavLink id='im-rich-button' to='/spots' onClick={handleSubmit}>I'm rich</NavLink>
             <h1>Not sure where to go?</h1>
-            <img src='https://www.sbidawards.com/wp-content/uploads/2020/08/0c2107c787a7815480dd1c833d285ef2a7c89183.jpg' alt=''/>
+            <img id='deluxe-logo' src={logo} alt=''></img>
+            <img id='mansion' src='https://www.sbidawards.com/wp-content/uploads/2020/08/0c2107c787a7815480dd1c833d285ef2a7c89183.jpg' alt=''/>
         </div>
     );
 }

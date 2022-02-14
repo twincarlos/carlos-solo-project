@@ -15,10 +15,11 @@ function Navigation({ isLoaded }){
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const user = useSelector(state => state.user.user);
-  const { render } = useContext(BookingContext);
+  const { render, setRender } = useContext(BookingContext);
 
   const loginDemo = () => {
-    return dispatch(sessionActions.login({ credential: 'jeff@bezos.io', password: 'password' }));
+    dispatch(sessionActions.login({ credential: 'jeff@bezos.io', password: 'password' }));
+    return setRender(!render);
   }
 
   useEffect(() => {
@@ -30,7 +31,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />
-        {(user?.isHost ? null : <a id='become-host' href='/host'>Become a Host</a>)}
+        {((user?.isHost || sessionUser?.isHost) ? null : <a id='become-host' href='/host'>Become a Host</a>)}
       </>
     );
   } else {

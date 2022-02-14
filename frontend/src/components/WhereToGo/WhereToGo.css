@@ -9,13 +9,21 @@ div#where-to-go {
     text-align: center;
 }
 
-#where-to-go > img {
+#mansion {
     position: relative;
     width: 60%;
     bottom: 130px;
     border-radius: 10px;
     box-shadow: 0 0 50px #edaa0086;
-    filter: brightness(80%);
+    filter: brightness(30%);
+}
+
+#deluxe-logo {
+    position: absolute;
+    width: 500px;
+    top: 150px;
+    left: 1030px;
+    z-index: 1;
 }
 
 #where-to-go > h1 {
@@ -37,4 +45,9 @@ div#where-to-go {
     padding-left: 40px;
     padding-right: 40px;
     color: black;
+    transition: .5s background-color;
+}
+
+#im-rich-button:hover {
+    background-color: goldenrod;
 }

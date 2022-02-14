@@ -9,6 +9,7 @@ import { BookingContext } from '../../context/BookingContext';
 import ProfileLinks from '../ProfileLinks';
 import * as sessionActions from "../../store/session";
 import './Navigation.css';
+import icon from '../../airbnb-deluxe-assets/icon.png';
 
 function Navigation({ isLoaded }){
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ function Navigation({ isLoaded }){
     <>
       <ul id='nav'>
         <li>
-          <NavLink id='home' exact to="/">Home</NavLink>
+          <NavLink id='home' exact to="/"><img src={icon} alt=''></img></NavLink>
           <BookingSearchBar />
           {isLoaded && sessionLinks}
         </li>

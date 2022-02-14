@@ -68,7 +68,7 @@
 }
 
 #video-right {
-    background-image: url(../../../public/airbnb-deluxe-assets/host-img.jpeg);
+    background-image: url(../../airbnb-deluxe-assets/host-img.jpeg);
     background-size: cover;
     background-position: 30%;
     filter: brightness(60%);

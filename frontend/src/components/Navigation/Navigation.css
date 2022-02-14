@@ -24,9 +24,14 @@
 #home {
     position: absolute;
     left: 50px;
-    margin-top: 10px;
+    margin-top: -5px;
     color: white;
     font-size: 30px;
+    width: 2.5%;
+}
+
+#home > img {
+    width: 100%;
 }
 
 .profile-dropdown {

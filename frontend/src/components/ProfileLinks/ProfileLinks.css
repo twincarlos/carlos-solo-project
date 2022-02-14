@@ -25,3 +25,8 @@
     opacity: 1;
     width: 10%;
 }
+
+.profile-link {
+    text-decoration: none;
+    color: white;
+}

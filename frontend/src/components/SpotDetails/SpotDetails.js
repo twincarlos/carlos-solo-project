@@ -95,7 +95,7 @@ function SpotDetails() {
             <div id='reviews-div'>
                 <div id='reviews-title'>
                     <h1>Reviews</h1>
-                    { ((bookingList.filter((booking) => booking.booking.spotId === Number(spotId))).length) && (<button onClick={() => setShowModal(true)}><i className="fas fa-plus"></i></button>) }
+                    { bookingList ? ((bookingList.filter((booking) => booking.booking.spotId === Number(spotId))).length) && (<button onClick={() => setShowModal(true)}><i className="fas fa-plus"></i></button>) : null}
                 </div>
                 { showModal && (
                     <Modal onClose={() => setShowModal(false)}>

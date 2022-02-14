@@ -42,7 +42,7 @@
 5. Enter the username, password, and database you created into your .env file, a JWT_SECRET token, and your desired PORT (preferably 5000).
 6. Add the following proxy to your package.json file within your frontend directory, replacing or keeping the 5000 port to match your PORT configuration found in your .env file.
    ```sh
-   "proxy": "http"//localhost:5000"
+   "proxy": "http//localhost:5000"
    ```
 7. Create Database, Migrate, and Seed models.
    ```sh

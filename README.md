@@ -55,7 +55,7 @@
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twincarlos](https://github.com/twincarlos) - twincarlos98@gmail.com
+[@twincarlos](https://github.com/twincarlos) - twincarlos98@gmail.com
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
